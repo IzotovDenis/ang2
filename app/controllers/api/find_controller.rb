@@ -9,7 +9,7 @@ class Api::FindController < ApiController
     @ids = Item.search_for_ids(str_query(params[:query], params[:attr]), set_options)
     @count = Item.search_for_ids(str_query(params[:query], params[:attr]), set_options_ids)
     @order = "idx(array#{@ids.to_s}, items.id)" if @count.length > 0
-    @items = Item.where(:id=>@ids).order("#{@order}").pg_result(true)
+    @items = Item.where(:id=>@ids).order("#{@order}").pg_result(@can_view_price)
     render :json => {:items=>@items, :total_entries=>@count.length}
   end
 
