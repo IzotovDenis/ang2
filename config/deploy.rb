@@ -1,6 +1,6 @@
 lock '3.4.0'
 
-set :repo_url, 'git@github.com:IzotovDenis/angular.git'
+set :repo_url, 'git@github.com:IzotovDenis/ang2.git'
 set :application, 'pavto'
 application = 'pavto'
 set :rvm_type, :user
