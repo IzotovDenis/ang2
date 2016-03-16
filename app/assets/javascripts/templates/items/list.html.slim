@@ -42,10 +42,9 @@
 					.cell.item-title
 						span.text.cursor-pointer ng-click="itemShow(item)"
 							| {{::item.title}}
-						.item-offers ng-if="::item.label"
-							.label.label-green ng-class="::item.label.variant" 
-								labeltext variant="::item.label.variant"
-								| {{::label.variant}}
+						.item-offers ng-if="::item.new_label=='t'"
+							.label.label-green.label-new 
+								| new
 						itemoem oems="::item.oems"
 					.cell.item-qty ng-if="::(canOrder() != false)" 
 						| {{::item.qty}}
