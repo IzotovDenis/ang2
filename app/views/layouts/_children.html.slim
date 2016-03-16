@@ -1,0 +1,10 @@
+- group.each do |children|
+	li
+		.menu-block
+			= link_to "groups/#{children["id"]}" do
+				= children["site_title"]
+			-if children["last_new_item"].to_i > (Time.now-14.days).to_i
+				span.label.label-new.label-danger new
+			-if children['children']
+				ul
+					= render "layouts/children", group: children['children']

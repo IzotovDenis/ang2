@@ -1,0 +1,66 @@
+.item-content ng-controller="ItemsCtrl"
+	| {{items.itemViews()}}
+	.item-control ng-show="items.itemsControl"
+		.item-view
+			span.title Показывать товары:
+			.btn-group
+				label.btn.btn-default btn-radio="'list'" ng-model="items.userView" ng-click="items.setUserView('list')"
+					.glyphicon.glyphicon-th-list
+				label.btn.btn-default btn-radio="'thumbs'" ng-model="items.userView" ng-click="items.setUserView('thumbs')"
+					.glyphicon.glyphicon-th-large
+	.items-area.sample-show-hide ng-show="showHead()"
+		.item-view-table.sample-show-hide
+			.item-new ng-class="{'item-list-table': items.itemsView() == 'list', 'item-list-thumbs': items.itemsView() == 'thumbs'}"
+				.item-list-table-head
+					.cell.item-photo
+						| Картинка
+					.cell.item-article
+						| Код/артикул
+					.cell.item-title 
+						| Наименование 
+					.cell.item-qty ng-if="canOrder() != false"
+						| Остаток
+					.cell.item-price ng-if="canOrder() != false"
+						| Цена
+					.cell.item-order ng-if="canOrder() != false"
+						|Заказ
+					.cell.item-view-price ng-if="canOrder() == false"
+				.item ng-repeat="item in items.list" key-focus="" ng-class="::{sold: item.qty == 0}"
+					.cell.item-photo ng-click="itemShowImage(item)"
+						item-image image="::item.image" size="imageView" id="::item.id"
+					.cell.item-article
+						.item-article-kod
+							.item-article-label
+								| код
+							.item-article-value
+								| {{::item.kod}}
+						.item-article-article
+							.item-article-label
+								| артикул
+							.item-article-value
+								| {{::item.article}}
+					.cell.item-title
+						span.text.cursor-pointer ng-click="itemShow(item)"
+							| {{::item.title}}
+						.item-offers ng-if="::item.label"
+							.label.label-green ng-class="::item.label.variant" 
+								labeltext variant="::item.label.variant"
+								| {{::label.variant}}
+						itemoem oems="::item.oems"
+					.cell.item-qty ng-if="::(canOrder() != false)" 
+						| {{::item.qty}}
+					.cell.item-price ng-if="::(canOrder() != false)"
+						span.price-value ng-class="::{'price-confirm': item.price == 0.00}"
+							currency value="::item.price" item="true"
+						br
+						span.price-currency ng-if="::(item.price != 0.00)"
+							| руб.
+					.cell.item-order ng-if="::(canOrder() != false)"
+						form ng-submit="addToCart(item)"
+							input.order-qty type="text" ng-model="item.ordered" name="order_item[qty]" placeholder="0"
+							input.btn.btn-xs.btn-default.qty-btn.btn-order ng-class="{'btn-success': inCart(item.id)}" type="submit" value="В корзину"
+					.cell.item-view-price ng-if="::(canOrder() == false)"
+						.btn.btn-default.btn-xs ng-click="priceShow()" увидеть цены
+	.center ng-show="items.busy"
+		.glyphicon.glyphicon-refresh.glyphicon-refresh-animate.loading
+	pagination total-items="items.totalEntries" ng-model="currentPage" ng-change="pageChanged()" items-per-page="items.itemsPerPage" previous-text="Назад" next-text="Вперед" ng-show="items.itemsPagin"

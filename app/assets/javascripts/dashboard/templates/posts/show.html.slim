@@ -1,0 +1,12 @@
+h1 Новая статья
+
+.row
+	.col-xs-3
+		a.btn.btn-default ng-href="#/posts" Все записи
+	.col-xs-9
+		input.form-control ng-model="post.title" placeholder="Введите заголовок"
+		input.form-control ng-model="post.block" placeholder="Блок"
+		input.form-control ng-model="post.url" placeholder="url"
+		text-angular ng-model="post.text"
+
+		span.btn.btn-default ng-click="savePost()" Сохранить

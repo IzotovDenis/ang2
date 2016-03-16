@@ -1,0 +1,38 @@
+-if @a
+	.price-list-btn
+		.btn.btn-primary.btn-block ng-click="downloadPricelist()"
+			span.glyphicon.glyphicon-cloud-download
+			| Скачать прайс-лист [zip]
+.menu
+	ul.menu-bar
+		-if @a
+			li.menu-bar-root denismenu="" id="brand"
+				span.title
+					| БРЕНДЫ
+				span.glyphicon.glyphicon-chevron-right
+				.menu-dropright ng-show="aa == 'brand'" denismenu1="" id="brand" class="column-brands"
+					ul
+						- Brand.all.order(:title).each do |brand|
+							li
+								.menu-block
+									=link_to brand.title, "brands/#{brand.id}"
+		li.menu-bar-root-title
+			| КАТАЛОГ ТОВАРОВ
+		- Group.able.select("id, title, site_title, ancestry, last_new_item").arrange_serializable(:order=>:title).each do |group|
+			-if !group['children'].empty?
+				li.menu-bar-root denismenu="" id="#{group['id']}"
+					span.title
+						= group["site_title"]
+					-if group["last_new_item"].to_i > (Time.now-7.days).to_i
+						.menu-new
+							.label.label-new.label-danger new
+					span.menu-arrow.glyphicon.glyphicon-chevron-right
+				.menu-dropright ng-show="aa == #{group['id']}" denismenu1="" id="#{group['id']}" class="column#{group_column(group)}"
+					ul
+						= render "layouts/children", group: group['children']
+			- else
+				li.menu-bar-root
+					= link_to "groups/#{group["id"]}" do
+						span.title
+							= group["site_title"]
+	

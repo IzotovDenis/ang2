@@ -1,0 +1,72 @@
+.btn.btn-warning.btn-xs aria-hidden="true" class="close modal-close" data-dismiss="modal" type="button" ng-click="closeModal()" x
+.modal-header
+  h4.modal-title Заказ
+
+.modal-body
+	p
+		.btn.btn-danger.btn-xs ng-click="deleteItems()" Удалить
+	table.table.item-list.order
+		tr.head
+			th.center.qty 
+				.btn.btn-default.btn-xs ng-click="checkAll(true)" 
+					span.glyphicon.glyphicon-check
+				.btn.btn-default.btn-xs ng-click="checkAll(false)"
+					span.glyphicon.glyphicon-unchecked
+			th.center Картинка
+			th.center Код/артикул
+			th.center Наименование
+			th.center Остаток
+			th.center Цена
+			th.center Заказ
+			th.center Сумма
+			th.center Удалить
+		tr.tr_middle ng-repeat="item in order.current.items track by item.id" ng-class="::{'out-of-stock': item.item_qty == 0}"
+			td.center.qty
+				input type="checkbox" ng-model="item.checked" ng-init="item.checked = false"
+			td.center.photo
+				item-image image="::item.image" size="'list'" id="::item.id"
+			td.kod
+				.table_kod_lable = "код:"
+				.item_kod.table_kod_value
+					| {{::item.kod}}
+				.table_kod_lable = "артикул:"
+				.item_article.table_kod_value
+					| {{::item.article}}
+			td.title
+				| {{::item.title}}
+			td.center.qty
+				| {{::item.item_qty}}
+			td.center.price
+				span.price-value
+					currency value="::item.price"
+				br
+				span.price-currency
+					| руб
+			td.center.order
+				form ng-submit="addToCart(item)"
+					input.order-qty type="text" ng-model="item.ordered" ng-blur="addToCart(item)" name="order_item[qty]" value="0"
+			td.center.item-total
+				span.price-value
+					currency value="item.price*item.ordered"
+				br
+				span.price-currency
+					| руб
+			td.center.action
+				.icon-destroy.cursor-pointer ng-click="deleteItem(item)" 
+					.glyphicon.glyphicon-remove
+		tr.tr-order-total.center
+			td.label-amount colspan="7" Итого
+			td colspan="2"
+				span.price-value
+					currency value="order.current.amount"
+				br
+				span.price-currency
+					| руб
+ 	label Комментарий к заказу
+	textarea.form-control ng-model="orderComment"
+
+.modal-footer.order-footer
+	h3.lead.bg-success
+		input type="checkbox" value="1" ng-model="orderChecked"
+		| Наименование товаров и количество в заказе указано верно.
+	button.btn.btn-primary ng-click="forwardOrder()" ng-disabled="!orderChecked"  Отправить заказ

@@ -1,0 +1,14 @@
+h1 Предложения
+
+
+a.btn.btn-default ng-href="#/offers/new" Добавить акцию
+
+table.table
+	tr ng-repeat="offer in offers"
+		td	
+			a ng-href="#/offers/{{offer.id}}"
+				img ng-src="{{offer.thumb}}"
+		td
+			| {{offer.title}}
+		td
+			btn.btn-danger.btn-xs ng-click="destroyOffer(offer.id)" удалить

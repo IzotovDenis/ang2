@@ -1,0 +1,25 @@
+/ Вывод списка акций, предложений, новинок
+.main-page.sample-show-hide ng-show="showMain"
+	.offers-scroll
+		.offer-scroll.shadowed ng-repeat="banner in banners.well" title="{{banner.label}}"
+			a ng-href="{{banner.link}}"
+				img ng-src="{{banner.image}}"
+	.clear
+	/ Карусель
+	.carousels
+		carousel interval="5000" disable-animation="true"
+		  slide active="banner.active" label="banner.label" ng-repeat="banner in banners.carousel"
+		  	a ng-href="{{banner.link}}"
+				img ng-src="{{banner.image}}"
+				
+	h3 Лучшие предложения
+	.inthumbs
+		.inthumb.shadowed ng-repeat="slot in banners.slot"
+			a ng-href="{{slot.link}}"
+				img ng-src="{{slot.image}}"
+	.clear
+	h3 Популярные товары
+	/ Список товаров
+	div ng-include="'items/list.html'"
+.center ng-show="!showMain"
+	.glyphicon.glyphicon-refresh.glyphicon-refresh-animate.loading

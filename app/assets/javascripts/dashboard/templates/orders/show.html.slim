@@ -1,0 +1,38 @@
+h1 Заказ {{order.id}}
+p
+	span.bold Покупатель: 
+	a ng-href="#/users/{{order.user.id}}"
+		| {{order.user.name}}
+p
+	span.bold Дата:
+	span
+		|  {{order.date}}
+p
+	span.bold Комментарий:
+	span
+		|  {{order.comment}}
+
+table.table.item-list
+	tr.head
+		th.center.photo Картинка
+		th.center.kod Код/артикул
+		th.center.title Наименование
+		th.center.qty Кол-во
+		th.center.price Цена
+	tr.tr_middle ng-repeat="item in order.items"
+		td.center.photo
+			item-ordered
+			item-image image="::item.image" size="'list'" id="::item.id"
+		td.kod
+			.table_kod_lable = "код:"
+			.item_kod.table_kod_value
+				| {{::item.kod}}
+			.table_kod_lable = "артикул:"
+			.item_article.table_kod_value
+				| {{::item.article}}
+		td.title
+			| {{::item.title}}
+		td.center.qty
+			| {{::item.ordered}}
+		td.center.price
+			| {{::item.price}} руб.

@@ -1,0 +1,17 @@
+/ Вывод списка акций, предложений, новинок
+.offers-scroll
+	.col-sm-3.offer-scroll ng-repeat="offer in offers"
+		a ng-href="/offers/{{offer.id}}"
+		  img ng-src="{{offer.thumb}}"
+			.caption
+			  span.strong
+				| {{offer.title}}
+/ Карусель
+.carousels
+	carousel interval="5000" 
+	  slide active="slider.active" ng-repeat="slider in sliders"
+	  	a ng-href="{{slider.link}}"
+			img ng-src="{{slider.image}}" style="margin:auto;"
+
+/ Список товаров
+div ng-include="'items/list.html'"

@@ -1,0 +1,137 @@
+.app-view-header
+	| {{user.name}}
+
+.col-xs-3
+	.panel.panel-info.cursor-pointer ng-click="editUser(user.id)"
+		.panel-heading
+			.panel-title 
+				| Полная информация
+	.panel.panel-info
+		.panel-heading
+			| Краткая информация
+		.panel-body.panel-user-short-info
+			.block-info
+				span.info
+					| {{user.person}}
+				span.title 
+					| Контактное лицо
+			.block-info
+				span.info
+					| {{user.phone}}
+				span.title  Телефон
+			.block-info
+				span.info
+					| {{user.email}}
+				span.title email
+			.block-info
+				span.info
+					| {{user.city}}
+				span.title Город
+			.block-info
+				span.info
+					| {{user.inn}}
+				span.title  ИНН
+		.panel-footer
+			a.btn.btn-block.btn-success.btn-xs ng-href="https://focus.kontur.ru/search?query={{user.inn}}" target="_blank"
+				| проверить в фокусе
+	.panel.panel-default ng-if="user.role != 'dev'"
+		.panel-heading
+			.panel-title 
+				| Статус пользователя
+			.panel-body
+				select.form-control ng-model="user.role"
+					option value='user' Пользователь
+					option value='buyer' Покупатель
+				.checkbox
+					label
+						input type="checkbox" ng-model="user.mailConfirm"  Уведомить по почте
+				.btn.btn-block.btn-xs.btn-primary ng-click="updateRole()" Применить
+
+
+	.panel.panel-info
+		.panel-heading
+			| Дата регистрации
+		.panel-body
+			| {{user.created_at}}
+.col-xs-9
+	.row
+		.col-md-3
+			.panel.panel-default
+				.panel-body
+					h1
+						| {{user.orders_count}}
+					p.bold Заказов
+		.col-md-6
+			.panel.panel-default
+				.panel-body
+					h1
+						| {{activities[0].date}}
+					p.bold Последняя активность
+		.col-md-3
+			.panel.panel-default
+				.panel-body
+					h1
+						| {{user.activities_count}}
+					p.bold Всего действий
+
+	tabset.user-tabs justified="true"
+		tab heading="Активность" select="loadActivities()"
+			.panel.panel-default
+				.panel-table.panel-scroll
+					.activity-group
+						ul.activity-group-activities
+							li.activity-group-activity ng-repeat="activity in activities" ng-class="{
+							success: activity.controller=='order_items' && activity.action=='create',
+							danger: activity.controller=='order_items' && activity.action=='destroy',
+							warning: activity.controller=='order_items' && activity.action=='update',
+							info: activity.controller=='find'
+							}"
+								span.activity-group-activity-date
+									| {{activity.date}}
+								span.activity-group-activity-log
+									actionlog controller="activity.controller" log="activity.log" action="activity.action"
+		tab heading="Корзина" select="loadCurrentOrder()"
+			.panel.panel-default
+				.panel-table ng-if="order"
+					div ng-include="'dashboard/templates/orders/order_header.html'"	
+				.panel-table.panel-scroll ng-if="order"
+					div ng-include="'dashboard/templates/orders/order.html'"
+				.panel-body
+					.btn.btn-default.btn-xs ng-click="loadCurrentOrder()" Показать/Обновить
+					.pull-right ng-if="order"
+						| Всего 
+						span.price-value.strong
+							| {{order.items.length}} 
+						|	 наименований. Сумма 
+						span.price-value.strong
+							currency value="order.amount"
+						|  руб.
+		tab heading="Заказы" select="loadOrders()"
+			.panel.panel-default
+				.panel-table ng-if="orders.length > 1"
+					table.table.order-table-header
+						tr
+							th.order-table-id Id
+							th.order-table-amount Сумма
+							th.order-table-comment Комментарий
+							th.order-table-date Дата формирования
+							th.order-table-actions Действия
+				.panel-table.panel-scroll 
+					table.table.order-table-content
+						tr ng-repeat="order in orders"
+							td.order-table-id
+								a ng-href="#/orders/{{order.id}}" target="_blank"
+									| {{order.id}}
+							td.order-table-amount
+								span.price-value
+									currency value="order.amount"
+								span.price-currency
+									|  руб
+							td.order-table-comment
+								| {{order.comment}}
+							td.order-table-date
+								| {{order.date}}
+							td.order-table-actions
+								.btn.btn-default.btn-xs	отправить на email
+				.panel-body ng-if="orders.length < 1"
+					| Заказов нет.

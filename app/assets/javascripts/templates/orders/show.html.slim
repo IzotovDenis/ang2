@@ -1,0 +1,45 @@
+a ng-href="/orders" class="btn btn-default"  Все заказы
+
+h1 Заказ № {{order.id}}
+
+p Дата отправики с сайта : {{order.formed}}
+
+p ng-show="order.comment"
+	| {{order.comment}}
+p * Цены указаны на текущий момент и могут отличатся от даты формирования заказа.
+
+p
+	.btn.btn-default.btn-success ng-click="checkCheck()"
+		span.glyphicon.glyphicon-plus
+		| Добавить в корзину
+table.table.item-list
+	tr.head
+		th.center.qty 
+			.btn.btn-default.btn-xs ng-click="checkAll(true)" 
+				span.glyphicon.glyphicon-check
+			.btn.btn-default.btn-xs ng-click="checkAll(false)"
+				span.glyphicon.glyphicon-unchecked
+		th.center.photo Картинка
+		th.center.kod Код/артикул
+		th.center.title Наименование
+		th.center.qty Кол-во
+		th.center.price Цена
+	tr.tr_middle ng-repeat="item in order.items"
+		td.center.qty
+			input type="checkbox" ng-model="item.checked" ng-init="item.checked = false"
+		td.center.photo
+			item-ordered
+			item-image image="item.image" size="'list'" id="::item.id"
+		td.kod
+			.table_kod_lable = "код:"
+			.item_kod.table_kod_value
+				| {{::item.kod}}
+			.table_kod_lable = "артикул:"
+			.item_article.table_kod_value
+				| {{::item.article}}
+		td.title
+			| {{::item.title}}
+		td.center.qty
+			| {{::item.ordered}}
+		td.center.price
+			| {{::item.price}} руб.

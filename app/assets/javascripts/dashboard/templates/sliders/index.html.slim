@@ -1,0 +1,19 @@
+h1 Слайдеры:
+
+h4 Добавить новый слайдер
+input type="file" ng-model="image" name="file" base-sixty-four-input=""
+img ng-src="{{newSlider.image}}" ng-show="newSlider.image"
+p.bold Ссылка:
+input.form-control type="text" ng-model="newSlider.link"
+submit.btn.btn-default ng-click="createSlider()" Сохранить
+
+
+h4 Список слайдеров
+table.table
+	tr ng-repeat="slider in sliders"
+		td
+			img ng-src="{{slider.image}}"
+		td
+			a ng-href="{{slider.link}}" target="_blank" Ссылка
+		td
+			.btn.btn-danger.btn-xs ng-click="removeSlider(slider.id)" Удалить

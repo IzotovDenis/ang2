@@ -1,0 +1,11 @@
+- unless @sliders.empty?
+  #carousel-main-generic.carousel.slide data-ride="carousel"
+    .carousel-inner
+      - @sliders.all.each_with_index do |slider, i|
+        .item class=(i == 0 ? 'active' : "")
+          = link_to slider.action["link"] do
+            = image_tag slider.image.url
+    a.left.carousel-control data-slide="prev" href="#carousel-main-generic" role="button" 
+      span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control data-slide="next" href="#carousel-main-generic" role="button" 
+      span.glyphicon.glyphicon-chevron-right

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+  body {
+    background-color: #333333;
+    color: white;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
+
+  div.dialog {
+    width: 95%;
+    max-width: 640px;
+    margin: 4em auto 0;
+  }
+
+  div.dialog > div {
+    padding: 7px 12% 0;
+  }
+
+  h1 {
+    color: #FFFB00;
+    line-height: 1.5em;
+  }
+
+  div.dialog > p {
+    margin: 0 0 1em;
+    padding: 1em;
+    color: #666;
+  }
+
+        .page__browser {
+            position: relative;
+            display: block;
+            width: 60px;
+            height: 60px;
+            float: left;
+            margin-right: 44px;
+            color: #fff;
+            background: url(browsers.jpg) no-repeat;
+        }
+        .page__browser:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(browsers.jpg) no-repeat;
+        }
+        .page__chrome, .page__chrome:before {
+            background-position: 0 0;
+        }
+        .page__chrome:hover, .page__chrome:hover:before {
+            background-position: 0 -60px;
+        }
+        .page__firefox, .page__firefox:before {
+            background-position: -60px 0;
+        }
+        .page__firefox:hover, .page__firefox:hover:before {
+            background-position: -60px -60px;
+        }
+        .page__opera {
+            width: 56px;
+        }
+        .page__opera, .page__opera:before {
+            background-position: -120px 0;
+        }
+        .page__opera:hover, .page__opera:hover:before {
+            background-position: -120px -60px;
+        }
+        .page__safari {
+            width: 56px;
+            background-position: -176px 0;
+        }
+        .page__safari:before {
+            background-position: -176px 0;
+        }
+        .page__safari:hover, .page__safari:hover:before {
+            background-position: -176px -60px;
+        }
+        .page__ie, .page__ie:before {
+            background-position: -232px 0;
+        }
+        .page__ie:hover, .page__ie:hover:before {
+            background-position: -232px -60px;
+        }
+        .page__ie {
+            margin-right: 0;
+        }
+        .page__image {
+            display: block;
+        }
+
+  </style>
+</head>
+
+<body>
+  <!-- This file lives in public/422.html -->
+  <div class="dialog">
+    <div>
+      <h1>Очень старый браузер.</h1>
+      <p>Уважаемые клиенты, за окном 2015г. Для того, чтобы воспользоваться нашим сайто, обновите браузер до последней версии или установите любой другой из предложенных.</p>
+      <a class="page__browser page__chrome" id="page__chrome" target="_blank" href="http://www.google.ru/intl/ru/chrome/" title="Загрузить Chrome"><img src="chrome-color.jpg" alt="Chrome" class="page__image"></a>
+      <a class="page__browser page__firefox" id="page__firefox" target="_blank" href="http://www.mozilla.org/ru/firefox/new/" title="Загрузить FireFox"><img src="firefox-color.jpg" alt="FireFox" class="page__image"></a>
+      <a class="page__browser page__opera" id="page__opera" target="_blank" href="http://www.opera.com/ru" title="Загрузить Opera"><img src="opera-color.jpg" alt="Opera" class="page__image"></a>
+      <a class="page__browser page__safari" id="page__safari" target="_blank" href="http://www.apple.com/safari/" title="Загрузить Safari"><img src="safari-color.jpg" alt="Safari" class="page__image"></a>
+      <a class="page__browser page__ie" id="page__ie" target="_blank" href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie" title="Really?"><img src="ie-color.jpg" alt="Internet Explorer" class="page__image"></a>
+    </div>
+  </div>
+</body>
+</html>

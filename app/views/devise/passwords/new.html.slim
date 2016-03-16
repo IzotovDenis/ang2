@@ -1,0 +1,22 @@
+h2 Напоминание пароля
+p Инструкция
+ol
+  li Введите ваш e-mail
+  li Нажмите кнопку "Отправить мне письмо"
+  li На ваш email будет отправлено письмо с инструкцией по восстановлению пароля
+= render 'layouts/flash'
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = "Ошибка при регистрации"
+      ul
+        -@user.errors.each do |attr, error|
+          li
+            = error
+  div
+    = f.label :email
+    br/
+    = f.text_field :email, autofocus: true, :placeholder=>"Введите email", :class=>'form-control login-input input-sm'
+    br
+  div.center
+    = f.submit "Отправить мне письмо", :class=>"btn btn-primary btn-lg"

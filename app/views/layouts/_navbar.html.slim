@@ -1,0 +1,62 @@
+nav.navbar.navbar-blue.header role="navigation" ng-class="{app_load: appLoad}"
+  .inner-block
+    .navbar-header
+      .navbar-blue-brand
+        = link_to "/#/" do
+          = image_tag "logo100.png", :height=>"48px"
+      ul.nav.navbar-nav.navbar-right
+        li.newdis.new-label
+        li.newdis.discount-label
+        li.head-btn.dropdown.dropdown-discount.cursor-pointer ng-if="user.authorized == true"
+          a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" role="button"
+            span.text
+              | Скидка {{user.discount}} %
+          ul.dropdown-menu.dropdown-discount role="menu" 
+            li
+              a ng-click="setDiscount(0)"  убрать
+            li
+              a ng-click="setDiscount(1)"  1%
+            li
+              a ng-click="setDiscount(2)"  2%
+            li
+              a ng-click="setDiscount(3)"  3%
+            li
+              a ng-click="setDiscount(4)"  4%
+            li
+              a ng-click="setDiscount(5)"  5%
+            li
+              a ng-click="setDiscount(6)"  6%
+            li
+              a ng-click="setDiscount(7)"  7%
+
+        li.head-btn.navbar-cart ng-if="user.authorized == true"
+          a.cursor-pointer ng-click="open('lg')"
+            .glyphicon.glyphicon-shopping-cart
+            span.btn-head-lable
+              | Корзина:
+            .label.label-success 
+              | {{order.itemIds.length}}
+        li.head-btn.nav-link ng-if="user.authorized == false"
+          = link_to new_user_session_path, :target=>"_self" do
+            span.glyphicon.glyphicon-log-in
+            span.btn-head-lable
+              | Войти
+        li.head-btn.nav-link ng-if="user.authorized == false"
+          = link_to new_user_registration_path, :target=>"_self" do
+            span.glyphicon.glyphicon-edit
+            span.btn-head-lable 
+              | Регистрация
+        li.head-btn.dropdown.dropdown-user.cursor-pointer ng-if="user.authorized == true"
+          a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" role="button"
+            span.glyphicon.glyphicon-user
+            span.btn-head-lable
+              | Меню покупателя
+            span.caret
+          ul.dropdown-menu.dropdown-user role="menu" 
+            li
+              a ng-href="/profile"  Профиль
+            li
+              a ng-href="/orders"  Мои заказы
+            li.divider
+            li
+              = link_to 'выход', destroy_user_session_path, :target=>"_self", :method=>:delete

@@ -1,0 +1,45 @@
+.app-view-header
+	| Активность пользователей
+.row
+	.col-xs-3
+		.panel.panel-info.cursor-pointer
+			.panel-heading
+				.panel-title.bg-info.center ng-click="loadActivities()" 
+					| Обновить
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info
+					| Пользователи онлайн
+			.panel-body
+				ul.list-group
+					li.list-group-item ng-repeat="user in online"
+						a ng-href="#/users/{{user.id}}"
+							span.glyphicon.glyphicon-user
+							span 
+								| {{user.name}}
+	.col-xs-9
+		.panel.panel-default
+			.panel-heading
+				.panel-title
+					| Последние действия
+			.panel-table
+				.activity-group ng-repeat="activ in activs"
+					.activity-group-header
+						span.activity-group-user
+							.glyphicon.glyphicon-user
+							| {{::activ.name}}
+						span.activity-group-count
+							| действий в блоке:
+							|  {{activ.activities.length}}
+					ul.activity-group-activities
+						li.activity-group-activity ng-repeat="activity in activ.activities" ng-class="{
+						success: activity.controller=='order_items' && activity.action=='create',
+						danger: activity.controller=='order_items' && activity.action=='destroy',
+						warning: activity.controller=='order_items' && activity.action=='update',
+						info: activity.controller=='find'
+						}"
+							span.activity-group-activity-date
+								| {{::activity.date}}
+							span.activity-group-activity-log
+								actionlog controller="activity.controller" log="activity.log" action="activity.action"
+

@@ -1,0 +1,18 @@
+.alert.alert-danger.bold.center.lead Внимание! Цены только для оптовых клиентов.
+div.center ng-if="user.authorized == false"
+	p.bold Уважаемый клиент, для просмотра цен и прайс-листа необходимо авторизироваться.
+	p.center
+		a.btn.btn-primary.btn-lg ng-href="/users/sign_in" target="_self"
+			span.glyphicon.glyphicon-log-in
+			span.btn-head-lable
+				| Войти
+	.h-line-dashed
+	p.bold Если вы новый клиент, вам необходимо зарегистрироваться.
+	p.center
+		a.btn.btn-default.btn-lg ng-href="/users/sign_up" target="_self"
+			span.glyphicon.glyphicon-edit
+			span.btn-head-lable
+				| Регистрация
+div.center ng-if="user.authorized == true && user.can_order == false"
+	p.bold Уважаемый клиент. Вам необходимо позвонить администратору для получения доступа к ценам:
+	p.lead тел. (4234) 35-55-17

@@ -1,0 +1,6 @@
+h1 
+	| {{brand.title}}
+	
+select.form-control ng-model="group" ng-options="group.id as group.title for group in groups"
+	option value="" Выбрать категорию
+div ng-include="'items/list.html'" 

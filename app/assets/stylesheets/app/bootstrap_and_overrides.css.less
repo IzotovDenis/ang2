@@ -1,0 +1,167 @@
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+ @btn-primary-bg: #2095F2;
+ @btn-success-bg: #4caf50;
+ @btn-info-bg: #01b9fe;
+ @btn-warning-bg: #ffc107;
+ @btn-danger-bg: #e84e40;
+ @text-color: #444;
+ @linkColor: #1b98e0;
+ @link-hover-color: #f50;
+ @font-size-h1: floor((@font-size-base * 1.8));
+ @font-size-h2: floor((@font-size-base * 1.6));
+ @font-size-h3: floor((@font-size-base * 1.4));
+ @font-size-h4: floor((@font-size-base * 1.3));
+ @font-size-h5: floor((@font-size-base * 1.2));
+ @font-size-h6: floor((@font-size-base * 1.1));
+
+ @state-danger-bg: #f34235;
+ @state-danger-text: #fff;
+ @border-radius-base: 0;
+
+ h1, .h1, h2, .h2, h3, .h3 {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.navbar-nav.navbar-right:last-child {
+margin-right: -15px;}
+.navbar-right {
+float: right !important;
+float: right;}
+.navbar-nav {
+float: left;
+margin: 0;}
+
+.pagination {
+display: inline-block;
+padding-left: 0;
+margin: 0px 0;
+border-radius: 4px;
+}
+
+//Panels
+.containder {
+witdh: 1000px;
+}
+
+.progress-striped .progress-bar, .progress-bar-striped {
+background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+-webkit-background-size: 40px 40px;
+background-size: 40px 40px;
+}
+
+.progress.active .progress-bar, .progress-bar.active {
+-webkit-animation: progress-bar-stripes 2s linear infinite;
+-o-animation: progress-bar-stripes 2s linear infinite;
+animation: progress-bar-stripes 2s linear infinite;
+}
+
+.panel {
+margin-bottom: 0px;
+background-color: transparent;
+border: none;
+border-radius: 0px;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+.panel-group .panel-heading + .panel-collapse .panel-body {
+border-top: none!important;
+}
+
+.panel-body {
+padding: 0px 0px 0px 2px;
+}
+.typeahead { z-index: 1051;}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+line-height: 1;
+margin: 0 auto;
+}
+
+thead {
+	font-size: 11px;
+}
+.table > thead > tr > th {
+text-align: center;
+vertical-align: middle !important;
+}
+
+html, body {
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+}
+
+.lead {
+font-weight: normal;
+font-size: 20px;
+margin-bottom: 0px;
+}
+
+.btn-xs, .btn-group-xs > .btn {
+}
+.btn {
+	border-radius: 0px!important;
+}
+.form-control{
+	border-radius: 0px!important;
+}
+
+.login-table > tbody > tr > td, {
+border-top: none!important;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+padding: 5px;
+}
+
+.carousel-control {
+	background-image: none!important;
+	color: #111;
+	width: 7%;
+}
+
+.carousel-control .glyphicon-chevron-right {
+left: 50%;
+}
+
+
+.modal-content {
+border-radius: 0px;
+}
+
+.table {
+
+	background: #fff;
+	border: 1px solid #ddd;
+}

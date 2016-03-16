@@ -1,0 +1,107 @@
+div ng-show="user.email"
+  h3 Редактирование профиля
+  .list-group-item.list-group-item-success ng-show="profileSys.success"
+    p.lead Успешно сохранено
+  .list-group-item.list-group-item-danger ng-show="profileSys.errors"
+    p.lead
+      | Не удалось сохранить
+    ul
+      li ng-repeat="error in profileSys.errors"
+        | {{error}}
+
+  p.bold Жирным шрифтом отмечены обязательные поля.
+  table.table.login-table
+    tr.tr_middle
+      td.right.login-lable.required
+        | email:
+      td 
+        | {{user.email}}
+    tr.tr_middle
+      td.right.login-lable.required
+        | ИНН:
+      td 
+        | {{user.inn}}
+    tr.tr_middle
+      td.right.login-lable.required
+        | Юр. название компании:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.name"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Контактное лицо:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.person"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Телефон:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.phone"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Город:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.city"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Юридический адрес:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.legal_address"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Фактический адрес:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.actual_address"
+    tr.tr_middle
+      td.right.login-lable.required
+        | ОГРН:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.ogrn"
+    tr.tr_middle
+      td.right.login-lable
+        | КПП:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.kpp"
+    tr.tr_middle
+      td.right.login-lable
+        | Банк:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.bank_name"
+    tr.tr_middle
+      td.right.login-lable
+        | БИК:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.bik"
+    tr.tr_middle
+      td.right.login-lable
+        | Кор. счет:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.corr_account"
+    tr.tr_middle
+      td.right.login-lable
+        | Лицевой счет:
+      td 
+        input.form-control.login-input.input-sm ng-model="user.curr_account"
+    tr.tr_middle
+      td.right.login-lable
+        | Примечание:
+      td 
+        textarea.form-control.login-input.input-sm ng-model="user.note"
+  submit.btn.btn-default ng-click="updateProfile()" Сохранить
+  .h-line-dashed
+  table.table.login-table
+    tr.tr_middle
+      td.right.login-lable.required
+        | Старый пароль:
+      td 
+        input.form-control.login-input.input-sm ng-model="newPassword.old"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Новый пароль:
+      td 
+        input.form-control.login-input.input-sm ng-model="newPassword.pass"
+    tr.tr_middle
+      td.right.login-lable.required
+        | Подтверждение пароля:
+      td 
+        input.form-control.login-input.input-sm ng-model="newPassword.confirm"
+  submit.btn.btn-default ng-click="updatePassword()" Изменить пароль

@@ -1,0 +1,65 @@
+h2 Регистрация
+p.bold ="Жирным шрифтом отмечены обязательные поля для регистрации."
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = "Ошибка при регистрации"
+      ul
+        -@user.errors.each do |attr, error|
+          li
+            = error
+  table.table.login-table
+    tr.tr_middle
+      td.right.login-lable.required = "email:"
+      td = f.text_field :email, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Контактное лицо:"
+      td = f.text_field :person, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Телефон:"
+      td = f.text_field :phone, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Город:"
+      td = f.text_field :city, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Юр. название компании:"
+      td = f.text_field :name, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Юр. адрес компании:"
+      td = f.text_field :legal_address, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "Фактический адрес компании:"
+      td = f.text_field :actual_address, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "ИНН:"
+      td = f.text_field :inn, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable.required = "ОГРН:"
+      td = f.text_field :ogrn, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "КПП:"
+      td = f.text_field :kpp, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "Название банка:"
+      td = f.text_field :bank_name, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "Расчетный счет:"
+      td = f.text_field :curr_account, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "Корреспондентский счет:"
+      td = f.text_field :corr_account, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "БИК:"
+      td = f.text_field :bik, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "Примечение:"
+      td = f.text_area :note, autofocus: true, :class=>'form-control login-input input-sm'
+    tr.tr_middle
+      td.right.login-lable = "Пароль:"
+      td = f.password_field :password, autocomplete: "off", :class=>'form-control login-input input-sm', :placeholder=>"минимум 6 символов"
+    tr.tr_middle
+      td.right.login-lable = "Подтверждение пароля"
+      td = f.password_field :password_confirmation, autocomplete: "off", :class=>'form-control login-input input-sm'
+
+
+  div.center= f.submit "Регистрация", :class=>"btn btn-primary btn-lg"

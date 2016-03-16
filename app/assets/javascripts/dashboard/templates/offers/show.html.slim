@@ -1,0 +1,71 @@
+h1 Редактор предложений
+
+.row
+	.col-xs-9
+		h5 Заголовок
+		input.form-control type="text" ng-model="offer.title"
+		h5 Описание
+		textarea.form-control ng-model="offer.text"
+		h5 Список товаров
+		table.table.item-list
+			tr.head
+				th.center.photo Картинка
+				th.center.kod Код/артикул
+				th.center.title Наименование
+				th.center.price 
+			tr.tr_middle ng-repeat="item in offer.items"
+				td.center.photo
+					item-image image="item.image" size="img_thumb"
+				td.kod
+					.table_kod_lable = "код:"
+					.item_kod.table_kod_value
+						| {{item.kod}}
+					.table_kod_lable = "артикул:"
+					.item_article.table_kod_value
+						| {{item.article}}
+				td.title 
+					| {{item.title}}
+				td.price
+					.btn.btn-danger.btn-xs.cursor-pointer ng-click="deleteItem(item)" удалить
+	.col-xs-3
+		h5 Вид акции
+		select.form-control.input-sm ng-model="offer.variant"
+			option value="new" Новинка
+			option value="hit" Популярный
+			option value="special" Акция
+		h5 Изображение
+		input type="file" ng-model="image" name="file" base-sixty-four-input=""
+		img ng-src="{{offer.thumb}}"
+		.h-line-dashed
+		h5 Добавление товара
+		p.bold По коду товара
+		form ng-submit="itemCode()"
+			.row
+				.col-xs-8
+					input.form-control.input-sm ng-model="newItem.code" placeholder="код товара" type="text"
+				.col-xs-4
+					button.btn.btn-default.btn-sm type="submit"  добавить
+		.h-line-dashed
+		p.bold Группу полностью
+		form ng-submit="itemGroup()"
+			.row
+				.col-xs-8
+					select.form-control.input-sm ng-model="newGroup.id"
+						option value="" disabled="" selected="" 
+							| Выбрать категорию
+						option ng-repeat="group in groups" value="{{group.id}}"
+							| {{group.title}}
+				.col-xs-4
+					button.btn.btn-default.btn-sm type="submit"  добавить
+		.h-line-dashed
+		p.bold Диапазон товаров
+		.row
+			form ng-submit="itemRange()"
+				.col-xs-4
+					input.form-control.input-sm placeholder="от" ng-model="newRange.from" type="text"
+				.col-xs-4
+					input.form-control.input-sm placeholder="до" ng-model="newRange.to" type="text"
+				.col-xs-4
+					button.btn.btn-default.btn-sm type="submit"  добавить
+		.h-line-dashed		
+		.btn.btn-primary.btn-block ng-click="sendOffer()"Сохранить

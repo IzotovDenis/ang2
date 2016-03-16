@@ -1,0 +1,28 @@
+h1 Все заказы
+
+pagination total-items="orders_count" ng-model="currentPage" ng-change="pageChanged()" items-per-page="30" previous-text="Назад" next-text="Вперед"
+
+.orders-history
+	.order ng-repeat="order in orders"
+		p.title
+			span.sm
+				| Заказ № 
+			span.bold
+				|  {{order.id}}
+			span.sm
+				|  от 
+			span.bold
+				|  {{order.date}}
+			span.sm 
+				|  Сумма: 
+			span.bold 
+				currency value="order.total" item="false"
+			span.sm
+				|  руб.
+		.comment
+			| {{order.comment}}
+		.view-order
+			.btn.btn-default ng-click="showOrder(order.id)" Открыть
+		.h-line-dashed
+
+pagination total-items="orders_count" ng-model="currentPage" ng-change="pageChanged()" items-per-page="30" previous-text="Назад" next-text="Вперед"

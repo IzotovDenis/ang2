@@ -1,0 +1,7 @@
+div ng-if="system.error.status"
+	.alert.alert-danger
+		p.lead 
+			| {{system.error.message}}
+
+div ng-view="" autoscroll="true" ng-if="!system.error.status"
+

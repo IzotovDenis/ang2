@@ -1,0 +1,54 @@
+.row
+	.col-xs-7
+		.index_page
+			.form_new
+				h3 ng-if="!formBanner.id" Новый баннер
+				h3 ng-if="formBanner.id" Редактирование баннера
+				.form-group
+					label
+						| URL
+					input.form-control placeholder="URL" ng-model="formBanner.image" required=""
+				.form-group
+					label
+						| Текст
+					input.form-control placeholder="Текст" ng-model="formBanner.label"
+				.form-group
+					label
+						| Ссылка
+					input.form-control placeholder="Ссылка" ng-model="formBanner.link"
+				.form-group
+					label
+						| Расположение
+					select.form-control ng-model="formBanner.location"
+						option value='well' Шапка
+						option value='carousel' Карусель
+						option value='slot' Плитка
+				.btn.btn-default ng-click="saveBanner()" Сохранить
+				.btn.btn-default ng-click="clearBanner()" Очистить
+	.col-xs-5
+		.btn.btn-default ng-click="saveSort('carousel')" Сохранить сортировку
+		tabset justified="true"
+			tab heading="Верх" select="setSortLocation('well')"
+				ul.admin-banners dnd-list="banners.well"
+					li.admin-banner ng-repeat="banner in banners.well" dnd-draggable="banner" dnd-moved="banners.well.splice($index, 1)" dnd-effect-allowed="move"
+						img ng-src="{{banner.image}}"
+						.admin-banner-control
+							.edit
+								.btn.btn-default.btn-xs ng-click="editBanner(banner)" правка
+								.btn.btn-danger.btn-xs ng-click="destroyBanner(banner)" удалить
+			tab heading="Карусель" select="setSortLocation('carousel')"
+				ul.admin-banners dnd-list="banners.carousel"
+					li.admin-banner ng-repeat="banner in banners.carousel" dnd-draggable="banner" dnd-moved="banners.carousel.splice($index, 1)" dnd-effect-allowed="move"
+						img ng-src="{{banner.image}}"
+						.admin-banner-control
+							.edit
+								.btn.btn-default.btn-xs ng-click="editBanner(banner)" правка
+								.btn.btn-danger.btn-xs ng-click="destroyBanner(banner)" удалить
+			tab heading="Слот" select="setSortLocation('slot')"
+				ul.admin-banners dnd-list="banners.slot"
+					li.admin-banner ng-repeat="banner in banners.slot" dnd-draggable="banner" dnd-moved="banners.slot.splice($index, 1)" dnd-effect-allowed="move"
+						img ng-src="{{banner.image}}"
+						.admin-banner-control
+							.edit
+								.btn.btn-default.btn-xs ng-click="editBanner(banner)" правка
+								.btn.btn-danger.btn-xs ng-click="destroyBanner(banner)" удалить

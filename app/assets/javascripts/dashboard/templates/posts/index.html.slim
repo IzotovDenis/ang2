@@ -1,0 +1,15 @@
+h1 посты
+a.btn.btn-default ng-href="#/posts/new"
+	| добавить пост
+
+
+ul.list-group dnd-list="posts"
+	li.list-group-item ng-repeat="post in posts" dnd-draggable="post" dnd-moved="posts.splice($index, 1)"	dnd-effect-allowed="move"
+		a ng-href="#/posts/{{post.id}}"
+			| {{post.title}}
+		a ng-click="deletePost(post.id)"
+			.glyphicon.glyphicon-remove
+		a
+			.glyphicon.glyphicon-eye-open
+	.btn.btn-default ng-click="saveSort()"
+		| Сохранить

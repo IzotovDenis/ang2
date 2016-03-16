@@ -1,0 +1,87 @@
+.app-container
+	display: none
+	position: relative
+	width: 100%
+	min-height: 100%
+	height: auto
+	margin: 0 auto
+
+.carous
+	width: 100%
+	height: 230px
+	overflow: hidden
+	position: relative
+	.carou-wrapper-outer
+		width: 9999px
+		position: relative
+		display: block
+		.carou
+			float: left
+		.carou-control
+			position: absolute
+			min-height: 230px
+			min-width: 160px
+			z-index: 999
+		.carou-left
+			left: 0px
+		.carou-right
+			right: 0px
+
+.head-block
+	margin: 0 auto
+	border-bottom: 1px solid #e9e9e9
+	width: 100%
+	height: 32px
+
+.middle-block
+	width: 100%
+	border-bottom: 1px solid #e9e9e9
+	background: white
+	.brand
+		float: left
+		width: 220px
+
+
+.content-head
+	width: 100%
+	overflow: hidden
+	.search-form
+		float: left
+		width: 800px
+		select
+			margin-left: -1px
+			font-size: 12px
+
+.cart 
+	position: relative
+	border: 1px transparent solid
+	overflow: hidden
+	padding: 2px 0px 2px 31px
+	height: 78px
+	background: url("http://style.aliunicorn.com/wimg/site/group-en/ru/buyer/sprite/home-sprite.png?t=39942172_0") no-repeat -146px -96px
+	height: 38px
+	width: 110px
+	text-align: center
+	float: right
+	&:hover
+		border: 1px solid #e9e9e9
+		background-color: #e9e9e9
+	.label
+		font-size: 13px
+		font-weight: bold
+	.text
+		margin-top: -3px
+		color: #222
+
+.enter-btn
+	height: 38px
+	width: 110px
+	text-align: center
+	float: right
+	font-size: 20px
+	line-height: 38px
+	&:hover
+		text-decoration: none
+	.glyphicon
+		font-size: 18px
+		padding: 0px 3px

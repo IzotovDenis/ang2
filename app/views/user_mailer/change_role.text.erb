@@ -1,0 +1,9 @@
+<% if @user.role == "buyer" %>
+Здравствуйте <%= @user.person %>. 
+Администратор открыл цены на сайте http://planeta-avtodv.ru.
+Логин для входа <%= @user.email %>
+<% end %>
+<% if @user.role == "user" %>
+Здравствуйте <%= @user.person %>. 
+Администратор закрыл цены на сайте http://planeta-avtodv.ru.
+<% end %>

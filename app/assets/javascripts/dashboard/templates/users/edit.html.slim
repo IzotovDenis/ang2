@@ -1,0 +1,92 @@
+.app-view-header
+  | Полная информация
+
+.row
+  .col-xs-8
+    .panel.panel-default
+      .panel-table
+        table.table.login-table
+          tr.tr_middle
+            td.right.login-lable.required
+              | email:
+            td 
+              | {{user.email}}
+          tr.tr_middle
+            td.right.login-lable.required
+              | ИНН:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.inn" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Юр. название компании:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.name" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Контактное лицо:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.person" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Телефон:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.phone" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Город:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.city" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Юридический адрес:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.legal_address" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | Фактический адрес:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.actual_address" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable.required
+              | ОГРН:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.ogrn" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | КПП:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.kpp" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | Банк:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.bank_name" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | БИК:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.bik" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | Кор. счет:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.corr_account" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | Лицевой счет:
+            td 
+              input.form-control.login-input.input-sm ng-model="user.curr_account" ng-readonly="!checked"
+          tr.tr_middle
+            td.right.login-lable
+              | Примечание:
+            td 
+              textarea.form-control.login-input.input-sm ng-model="user.note" ng-readonly="!checked"
+  .col-xs-4
+    .panel.panel-info
+      .panel-heading
+        .panel-title 
+          | Редактирование
+      .panel-body
+        input type="checkbox" ng-model="checked" Разрешить редактирование
+      .panel-footer
+        submit.btn.btn-default.btn-block ng-click="updateProfile()" Сохранить

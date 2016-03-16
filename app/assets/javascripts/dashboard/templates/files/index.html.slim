@@ -1,0 +1,50 @@
+h1 Файлы
+
+.file-manager
+	.control-tree
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info Пользователи онлайн
+			.panel-body
+				treecontrol class="tree-classic" tree-model="fm.folders" order-by="name" on-selection="showSelected(node)" selected-node="node1"
+					| {{node.name}}
+	.control-view
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info 
+					| {{fm.currentFolder.name}}
+				.panel-control
+					.btn.btn-default ng-click="newFolder()" Новая папка
+					.btn.btn-default ng-click="uploadFile()" ng-file-select="" ng-model="image_files" Загрузить файл
+			.panel-table
+				table.table
+					tr
+						th 
+						th урл
+						th действия
+					tr ng-repeat="file in files"
+						td
+							| {{file.id}}
+						td
+							| {{file.file.url}}
+						td
+							.btn.btn-info.btn-xs
+								| копировать
+							.btn.btn-default.btn-xs
+								| переместить
+							.btn.btn-danger.btn-xs
+								| удалить
+							.btn-group
+								button.btn.btn-default.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-expanded="true"
+									| Extra small button 
+									span.caret
+								ul.dropdown-menu role="menu"
+									li
+										a href="#"
+											| Action
+									li
+										a href="#"
+											| Action
+									li
+										a href="#"
+											| Action

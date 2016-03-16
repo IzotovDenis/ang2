@@ -1,0 +1,58 @@
+h1
+	| {{item.title}}
+	.item-image-area ng-click="itemShowImage(item)"
+		item-image image="item.image" size="img_item"
+.item-content-area
+	div
+		span Категория
+		span.bold 
+			a ng-href="/groups/{{item.group.id}}"
+				|  {{item.group.title}}
+	div
+		span Артикул:
+		span.bold
+			|  {{item.article}}
+	div
+		span Код товара:
+		span.bold
+			|  {{item.kod}}
+	.clear.h-line-dashed
+	p
+		span На складе: 
+		span.bold 
+			| {{item.qty}} шт.
+	p
+		span Количество в упаковке:
+		span.bold
+			| {{item.properties.in_pack}} шт.
+	p.lead
+		| Оптовая цена: 
+		span.price-value ng-class="{'price-confirm': item.price == 0.00}"
+			currency value="item.price" item="true"
+		span.price-currency
+			|  руб.
+	item-ordered
+	form ng-submit="addToCart(item)"
+		.input-group.input-group-qty
+			input.form-control type="text" ng-model="item.ordered" name="order_item[qty]" placeholder="0"
+			span.input-group-btn
+				button.btn.btn-default.qty-btn.btn-order ng-class="{'btn-success': inCart(item.id)}" type="submit" В корзину
+	.clear.h-line-dashed
+	div
+		table.table
+			tr ng-if="item.properties.oems"
+				td ОЕМ
+				td 
+					span.oem.cursor-pointer ng-repeat="oem in item.properties.oems" go-find="{{oem.oem}}" title="Искать товары с ОЕМ: {{oem.oem}}"
+						| {{oem.oem}}
+						br
+			tr
+				td Вес
+				td
+					| {{item.properties.weight}} кг.
+	p
+		| {{item.certificate}}
+.text.clearfix ng-if="item.text"
+	p.lead
+		| Описание товара
+	p ng-bind-html="item.text"

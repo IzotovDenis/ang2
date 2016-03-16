@@ -1,0 +1,17 @@
+h2 Вход
+= render 'layouts/flash'
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  div
+    = f.label "email или ИНН"
+    br/
+    = f.text_field :login, autofocus: true, :class=>'form-control'
+  div
+    = f.label "пароль"
+    br/
+    = f.password_field :password, autocomplete: "off", :class=>'form-control'
+  - if devise_mapping.rememberable?
+    div
+      = f.check_box :remember_me
+      = f.label "запомнить меня"
+  div.center
+    = f.submit "Вход", :class=>'btn btn-primary btn-lg'

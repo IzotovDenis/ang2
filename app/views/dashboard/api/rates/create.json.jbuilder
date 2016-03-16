@@ -1,0 +1,1 @@
+json.partial! "dashboard/api/currencies/currency", currency: @currency

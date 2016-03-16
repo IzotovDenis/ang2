@@ -1,0 +1,15 @@
+doctype html
+html ng-app="Admin"
+  head
+    title = yield(:title)
+    = javascript_include_tag "admin"
+    = stylesheet_link_tag    "admin", media: "all"
+    = csrf_meta_tags
+  body
+    #wrapper
+      .container
+        .row
+          .col-xs-2
+            = render "admin/left_menu"
+          .col-xs-10
+            = yield

@@ -1,0 +1,41 @@
+.activity-group
+	.activity-group-header
+		.activity-group-user
+			font-size: 13px
+			font-weight: bold
+		.activity-group-count
+			color: #777
+			padding: 0px 10px
+			font-size: 10px
+			font-weight: bold
+	ul.activity-group-activities
+		border-top: 1px dashed #ccc
+		border-bottom: 1px dashed #ccc
+		list-style: none
+		padding: 0px
+		li.activity-group-activity
+			.activity-group-activity-date
+				font-size: 10px
+				color: #555
+				padding: 0px 10px
+		li.success
+			background: rgba(98, 203, 49, 0.50)
+		li.danger
+			background: rgba(231, 76, 60, 0.50)
+		li.info
+			background: rgba(52, 152, 219, 0.50)	
+		li.warning
+			background: rgba(230, 126, 34, 0.50)
+
+
+.spinner-container
+	z-index: 2
+	-webkit-animation: rotate 2s linear infinite
+	animation: rotate 2s linear infinite
+.spinner-container .path
+	stroke-dasharray: 1,150
+	stroke-dashoffset: 0
+	stroke: rgba(27, 154, 89, 0.7)
+	stroke-linecap: round
+	-webkit-animation: dash 1.5s ease-in-out infinite
+	animation: dash 1.5s ease-in-out infinite

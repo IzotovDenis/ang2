@@ -1,0 +1,44 @@
+.footer-inner
+	.row
+		.col-xs-2.center
+			= image_tag "logo100.png"
+		.col-xs-7
+			p.bold Планета-авто - автотовары, автохимия, автомобильные аккумуляторы, аксессуары AUTOPROFI, автомобильные запчасти, автомузыка оптом и в розницу, доставка по Приморскому краю и Дальнему Востоку.
+			p.danger Внимание. Если сайт отображается некорректно, вам необходимо установить современный браузер из списка.
+			ul.browsers
+				= link_to "https://www.google.ru/chrome/browser/desktop/", :target=>"_blank" do
+					li.chrome
+				= link_to "http://www.mozilla.org/ru/firefox/new/", :target=>"_blank" do
+					li.firefox 
+				= link_to "http://www.opera.com/ru", :target=>"_blank" do
+					li.opera
+				= link_to "http://www.apple.com/safari/", :target=>"_blank" do
+					li.safari
+				= link_to "http://windows.microsoft.com/ru-ru/internet-explorer/download-ie", :target=>"_blank" do
+					li.ie 
+					
+		.col-xs-3.right
+			p.lead Планета-Авто
+			p
+				| Приморский край, г.Уссурийск,
+				br
+				| ул.Сергея Ушакова, дом 21
+				br
+				span.bold
+					= link_to "Показать на карте", "http://2gis.ru/ussuriysk/callout/131.97921%2C43.78716%2C16/center/131.977483%2C43.789507/zoom/16?utm_source=api2gis&utm_medium=widget&utm_campaign=firmsonmap%2F", :target=>"_blank"
+			p
+				span.bold Розничный магазин: 
+				span
+					| (4234) 35-55-27
+			p
+				span.bold СТО: 
+				span 
+					| (4234) 35-30-44
+			p
+				span.bold Оптовый отдел:
+				br
+				span.lead 
+					| (4234) 35-55-08
+					br
+					| (4234) 35-55-09
+

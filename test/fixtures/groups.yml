@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cid: MyString
+  title: MyString
+  parent_cid: MyString
+  ancestry: MyString
+
+two:
+  cid: MyString
+  title: MyString
+  parent_cid: MyString
+  ancestry: MyString

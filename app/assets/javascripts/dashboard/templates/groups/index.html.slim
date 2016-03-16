@@ -1,0 +1,22 @@
+h1 groups index
+.row
+	.col-xs-4
+		.btn.btn-default На уровень вверх
+		table.table
+			tr ng-repeat="group in groups"
+				td
+					small.glyphicon.glyphicon-sort
+				td
+					span 
+						| {{group.title}}
+				td
+					small.bold.group_disabled_true ng-if="group.disabled" ng-click="groupToggle(group.id)"
+						| [показать]
+					small.bold ng-if="!group.disabled" ng-click="groupToggle(group.id)"
+						| [скрыть]
+					small.bold ng-if="toggle_progress"
+						| [процесс]
+	.col-xs-8
+		h1 нет товаров в данной категории
+		table.table
+			tr ng-repeat="item in group.items"

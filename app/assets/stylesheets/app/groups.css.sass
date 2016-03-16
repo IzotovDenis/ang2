@@ -1,0 +1,158 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.label
+	font-size: 11px
+	font-weight: 400
+	padding: .1em .3em .1em
+
+.label-orange
+	background: #f77600
+
+.label-red
+	background: #ec2121
+
+.label-green
+	background: #27c24c
+
+.tr_middle
+	td
+		vertical-align: middle!important
+.item-list
+	background: #fff
+	border: 1px solid #ddd
+	font-size: 12px
+	tr
+		td
+			height: 70px
+			padding: 2px !important
+			border: 1px solid #dddddd
+			&:first-child
+				border-left: 0px
+			&:last-child
+				border-right: 0px
+	.head
+		th
+			vertical-align: middle !important
+			font-size: 11px
+			border-bottom-width: 2px
+			color: #555
+			border-top: 0px
+	.photo
+		width: 85px
+		min-width: 85px
+		max-width: 85px
+		background: #fff
+		overflow: hidden
+	.kod
+		width: 90px
+		min-width: 90px
+		max-width: 90px
+		.table_kod_lable
+			font-size: 11px
+			color: #888
+		.table_kod_value
+			font-size: 11px
+	.title
+		position: relative
+		overflow: hidden
+		.label-offer
+			position: absolute
+			top: 5px
+			right: 5px
+		.label-oem
+			font-size: 11px
+			position: absolute
+			bottom: 5px
+			left: 5px
+			white-space: nowrap
+			text-overflow: ellipsis
+			max-width: 100%
+			overflow: hidden
+	.price
+		width: 80px
+		min-width: 80px
+		max-width: 80px
+	.qty
+		width: 60px
+		min-width: 60px
+		max-width: 60px
+	.order
+		width: 70px
+		min-width: 70px
+		max-width: 85px
+		.order-qty
+			width: 30px
+			text-align: center
+		.btn-order
+			font-size: 10px
+			text-transform: uppercase
+.show-order-qty
+	width: 30px
+	text-align: center
+.catalog-list
+	padding: 5px
+	float: right
+	width: 215px
+	ul
+		padding-left: 0px
+		margin-top: -5px
+		.pcatalog-title
+			.arrow
+				display: block
+				width: 14px !important
+				height: 14px
+				line-height: 14px
+				text-shadow: none
+				font-size: 10px
+				position: absolute
+				right: 5px
+				top: 0px
+				padding: 0
+				text-align: center
+				margin: auto auto auto auto
+				bottom: 0px
+	.catalog-list-item
+		height: 40px
+		width: 100%
+		list-style: none
+		float: left
+		border-bottom: 1px dashed #ddd
+		&:last-child
+			border-bottom: 0px
+		.catalog-list-text
+			float: left
+			height: 40px
+			width: 165px
+			position: relative
+			display: table-cell
+			vertical-align: middle
+			text-align: right
+			.text
+				display: inline-block
+				line-height: 12px
+				position: absolute
+				top: 5px
+				right: 4px
+			.brand
+				position: absolute
+				top: 18px
+				right: 4px
+				font-weight: bold
+		.pdf-icon
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAASAAAAEgARslrPgAABzFJREFUWMOdl0tsVNcZx3/ncefOeMY2NTZJcMC1TXEKaRQVhFBAKKrYkKpKFyhRwyI7pCAVITawqapusoi6qLxPpIhapZVRVERUUorUWhAkoKqMUkfIyGANlLR+xI87rzPn0QVzJ+MHgfBJR/dq7rn3/M//+3//841gVYyMjHDkyBEuX77MuXPnuHXrFoVCAe893ntCCABIKQEQQhBCQClFR0cH/f39TE9Pc+DAAXn48GE/OjrKsWPHeFwIgI8++qh5L6XEe8+2bdvU8PBwZmxsjA0bNuCcwznXBKCUAiCOY7z3xHFMd3c3u3bt4oMPPiifPn2a3t5eobUO3nustZw4cWJ9AGfOnGn+EMexqNVqwVr7s02bNp3N5/PWOaeFEAghmvNSIOnVWosxxpdKJbm4uPh5sVh8+8KFC/PvvvuuyufzDuDo0aNrAOiW+zYA55zOZDJ2cXGxY+vWrW0DAwO+Wq3KlPIm8gYYKSVCCJxzLCwsMD8/z7179w5u2LBhtFgsvnXlypXZ1157TRYKBT88PAzA8ePHVzLw4YcftgHTQFsIIXjvhVJKCSEy3nuklM3UeO9J2dBa88Ybb6CUwnuPMYZarcadO3fc4OCgHh8f//ulS5cOJ0kyt3//fuG9D0ePHl3BpAQwxmCMaTfGtAH5bDbbZoyJjTFCKSWcc2J5eVnU63WRyWQEICqViqhWqwIQj7AKEcexaG9vF/V6Xcdx7Hbs2PH6vn37Rru6unpOnToVjDGiWCyuTUEIgVqt5uI4DocOHSJJEubm5kShUGDjxo0kScLExAQ7d+7EWsvt27eZmppakwoArTU9PT2Mj4+rKIpsHMev79ixY+TatWuHarWa/+yzz9YCqFar1Go1QghCShmUUsJ7D8Dly5fJ5/Ps2rWLcrmMUorl5WXK5fIKPaRAnHO89NJLDAwMsLy8rOfm5rxz7iejo6PZPXv2lHK5nADCmhRUKhVrrbVSSnv16lV7/vx5F0URu3fvZnBwkLt375LL5bhx4wYPHz7EOYcxZgWAdFhrkVJSKBTCc889J/P5fGVsbCz09fU1q2YFA6VSSTjnOpIk4dy5c9y/fx+Aixcv0t3dzdLSElNTU2zZsoXp6WlCCAghyGQya1gIISClbJpTZ2cn2WxWFotFtm/fzsjIyFoA1lorhPhDvV7PTE5Oimw2G7LZbK+Ucm+SJF5rLV955RWMMbz66qsIIfDeo5VCKbVC1au9Iq2gUqm0rhOmIqwJId4JIfDgwQP6+/vp7e09ePDgwUsDAwPOOSfTeg8hQAiIhugqlcoKQ2q156cJ3aLgSErJ3r179ezsrK1Wq12lUolyuYwxpmk4AkBp3NICfn6ObP9g06JXm9VTA3j//fcB6o3DKJw8edIODw+7lD4hRJNKARBpyp/+CWREvLmXoCNo7Hi1DlpTsV58J8ghBGiw4Gf/S/aHLyPbO9FCoLRu5r9VB08Kue4ijWto2VX60eA9IopQPc9T+dd1vHdI/ehISb1jvfxba9d9tgbA119/DcDMzAzVapUQwopeIDhHAOQLL5Jc/wemXCaEgLUWa21zrve+qY0kSZqlnX5/vdNwBcJ0N2lO09pHCHwAtWkzKllAi0dztdZNsKtLspXNJzKw+uXVdR0e+S3m/j1cklAeu4Rra8NWygTnIAS8c1hbX9FBPbUGHsdIykpQCvPVAyo3r9L5u99T/ssotS9v4Td2YzMxPsoQsjmCigjewxMEqZ8GQHPYOj7fTnLpz+iXf0w0tJP4yHss/OqXxD99C7WlnyAlIYDa+n0yPc/zpHqQTw3AOUQujynexYzfRL3Yz/Inf8T95wHxm+9gJv/N4m9/Tflvn2KmJin98zq2ZkDwrWnQT0d/IOgI6zzJJ2cQfdsIHd8j2vQCuqMTCp1ktcZMT1Ebvwm1CqbiMfe/gh8NNU3qmVJACDgVUf7yFks3PkfMzlI4+ZtGJ5xBSUkwVUTFkunZRObQz3F1i66UiITA1gzhWTQghMBZi1Wa5K/nqU2MY/73kI4j7yGcRRgDSuJTq9YRwnuoVVHBI7UCBCIt32diIASQEj8zgygltL/5C7LbhohMFZlrgxaPaKB+5AUIhJDflO2zVoHUGqoV2t98G2ktqr2DYGoQZVY0IE0AqWAbnXOzdL+LBlont9owmQxUyiDlGlGlJ1+rC6YLN65BSilanz8WQDabTTUQoigil8vJtL163EnXatut9uucE3Eco5RSvjFp3Z6wNb744gsBCGttbmJiwkxPTzvnXASIxsspAtGyEEKI0AAZGkBCCMFrrZmZmans3r277ebNm5Wurq7wrQA+/vhjB8Rnz569uLi4+IP5+fkMEDWGBlRjCL75Qxsa4QAH2EaDUwfM0NCQmZmZKQNicnLy2wF0dnb6paWl6ubNm6v5fH6uWq0SRVG6yxXWnNK++iRM06C1xjlHX18fxhjm5+dZrYP/A8kEOTTlyrESAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE0LTA3LTA3VDIwOjUwOjQ4LTA0OjAw77jjyQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNC0wNy0wN1QyMDo1MDo0OC0wNDowMJ7lW3UAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAAElFTkSuQmCC)
+			width: 32px
+			height: 32px
+			float: right
+			margin-top: 3px
+.nav-promo
+	li
+		a:hover
+			background: #fff
+	.pcatalog
+		border-top: 1px solid #ddd
+		&:first-child
+			border-top: 0px
+	.pcatalog-href
+		padding: 5px 0px

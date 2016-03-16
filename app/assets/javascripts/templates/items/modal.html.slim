@@ -1,0 +1,84 @@
+.btn.btn-warning.btn-xs aria-hidden="true" class="close modal-close" data-dismiss="modal" type="button" ng-click="closeModal()" x
+.modal-header
+  h4.modal-title
+  	| {{item.title}}
+.modal-body.modal-item-body
+	.item-image-area. ng-click="itemShowImage(item)"
+		item-image image="item.image" size="'img_item'" id="item.id"
+	.item-content-area
+		div
+			span Категория
+			span.bold 
+				a ng-href="/groups/{{item.group_id}}"
+					|  {{item.group_title}}
+		div
+			span Артикул:
+			span.bold
+				|  {{item.article}}
+		div
+			span Код товара:
+			span.bold
+				|  {{item.kod}}
+		.clear.h-line-dashed
+		.div ng-show="item.price"
+			p
+				span На складе: 
+				span.bold 
+					| {{item.qty}} шт.
+			p
+				span Количество в упаковке:
+				span.bold
+					| {{item.in_pack}} шт.
+			p.lead
+				| Оптовая цена: 
+				span.price-value
+					currency value="item.price" item="true"
+				span.price-currency ng-if="item.price != 0.00"
+					|  руб.
+			form ng-submit="addToCart(item)"
+				item-ordered
+				.input-group.input-group-qty
+					input.form-control type="text" ng-model="item.ordered" name="order_item[qty]" placeholder="0"
+					span.input-group-btn
+						button.btn.btn-default.qty-btn.btn-order ng-class="{'btn-success': inCart(item.kod)}" type="submit" В корзину
+		.div ng-hide="item.price"
+			p.bold Цена доступна для клиентов:
+			p.center
+				a.btn.btn-primary ng-href="/users/sign_in" target="_self"
+					span.glyphicon.glyphicon-log-in
+					span.btn-head-lable
+						| Войти
+				a.btn.btn-default ng-href="/users/sign_up" target="_self"
+					span.glyphicon.glyphicon-edit
+					span.btn-head-lable
+						| Регистрация
+		.clear.h-line-dashed
+		div
+			span ng-if="::item.certificate"
+				a ng-href="{{item.certificate}}"
+					span.glyphicon.glyphicon-file
+					span Сертификаты и документы
+				.clear.h-line-dashed
+			.modal-item-properties
+				.modal-item-propertie ng-if="::item.country"
+					span.propertie-name Страна происхождения:
+					span.propertie-value
+						| {{item.country}}
+				.modal-item-propertie ng-if="::item.weight"
+					span.propertie-name Вес:
+					span.propertie-value
+						| {{item.weight}} кг.
+				.modal-item-propertie ng-if="::item.type"
+					span.propertie-name Тип:
+					span.propertie-value
+						| {{item.type}}
+				.modal-item-propertie ng-if="::item.applicability"
+					span.propertie-name Применямость запчасти
+					span.propertie-value	
+						| {{item.applicability}}
+				.modal-item-properties.modal-item-oem ng-if="::item.oems"
+					itemoem oems="::item.oems"
+	.text ng-if="item.text"
+		p.lead
+			| Описание товара
+		p ng-bind-html="item.text"

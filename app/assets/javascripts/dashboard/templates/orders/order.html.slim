@@ -1,0 +1,27 @@
+table.table.item-list
+	tr.tr_middle ng-repeat="item in order.items"
+		td.center.photo
+			item-image image="item.image" size="'list'" id="::item.id"
+		td.kod
+			.table_kod_lable = "код:"
+			.item_kod.table_kod_value
+				| {{::item.kod}}
+			.table_kod_lable = "артикул:"
+			.item_article.table_kod_value
+				| {{::item.article}}
+		td.title
+			| {{::item.title}}
+		td.center.qty
+			| {{::item.ordered}}
+		td.center.price
+			span.price-value
+				currency value="::item.price"
+			br
+			span.price-currency
+				| руб
+		td.center.item-total
+			span.price-value
+				currency value="::(item.price*item.ordered)"
+			br
+			span.price-currency
+				| руб

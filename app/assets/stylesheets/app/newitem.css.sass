@@ -1,0 +1,208 @@
+.item-list-table
+	display: table
+	width: 100%
+	border-collapse: collapse
+	background: white
+	border: 1px solid #dddddd
+	font-size: 12px
+	.item-list-table-head
+		display: table-row
+		vertical-align: middle !important
+		font-size: 11px
+		border-bottom-width: 2px
+		color: #555555
+		border-top: 0px
+		text-align: center
+		font-weight: bold
+	.cell
+		display: table-cell
+		border: 1px solid #dddddd
+		vertical-align: middle
+	.item-photo
+		width: 85px
+		min-width: 85px
+		max-width: 85px
+		overflow: hidden
+		text-align: center
+	.item-article
+		width: 90px
+		min-width: 90px
+		max-width: 90px
+		line-height: 16px
+		.item-article-kod
+			padding: 0px 2px
+			display: block
+		.item-article-article
+			padding: 0px 2px
+			display: block
+		.item-article-label
+			font-size: 11px
+			color: #888888
+		.item-article-value
+			font-size: 11px
+			text-overflow: ellipsis
+			white-space: nowrap
+			overflow: hidden
+	.item-title
+		position: relative
+		overflow: hidden
+		line-height: 16px
+		padding: 0px 2px
+	.item-qty
+		width: 60px
+		min-width: 60px
+		max-width: 60px
+	.item-view-price
+		width: 94px
+		min-width: 94px
+		max-width: 94px
+	.item-price
+		width: 80px
+		min-width: 80px
+		max-width: 80px
+		line-height: 14px
+		.price-confirm
+			font-size: 12px!important
+			color: #777
+	.item-order
+		width: 75px
+		min-width: 75px
+		max-width: 75px
+	.item
+		display: table-row
+		height: 70px
+		max-height: 70px
+		min-height: 70px
+		vertical-align: middle !important
+
+.item-new
+	.sold
+		color: #7B7B7B
+		.item-qty
+			font-weight: bold
+	.item
+		.item-photo
+			text-align: center
+			position: relative
+			cursor: -webkit-zoom-in
+			vertical-align: middle
+			display: table-cell
+			img, .img_thumb, .img_thumb_m
+				max-width: 100%
+				margin: 0 auto
+		.item-qty
+			text-align: center
+		.item-order
+			text-align: center
+			.order-qty
+				width: 30px
+				text-align: center
+			.btn-order
+				font-size: 10px
+				text-transform: uppercase
+		.item-price
+			text-align: center
+			.price-value
+				font-size: 14px
+				font-weight: bold
+			.price-currency
+				color: #555555
+				font-size: 12px
+		&:hover
+			.item-title
+				.text
+					color: #0d80dc
+					text-decoration: underline
+
+
+.item-list-thumbs
+	overflow: hidden
+	padding-top: 1px
+	margin-right: -15px
+	display: block
+	padding: 1px
+	.item-list-table-head
+		display: none
+	.item
+		float: left
+		width: calc(100%/4 - 15px)
+		background: white
+		height: 305px
+		position: relative
+		-webkit-box-shadow: 0 0 0 1px #edeeee
+		box-shadow: 0 0 0 1px #edeeee
+		margin: 0 15px 15px 0
+		&:hover
+			box-shadow: 0 1px 4px rgba(0,0,0,.3)!important
+	.item-photo
+		height: 200px
+		width: 230px
+		margin: 0 auto
+		position: relative
+	.item-article
+		.item-article-kod
+			display: none
+		.item-article-article
+			display: block
+			.item-article-label
+				font-size: 11px
+				color: #888888
+				text-transform: capitalize
+				width: 20px
+				text-overflow: clip
+				overflow: hidden
+				margin: 0px 10px
+				float: left
+				font-weight: bold
+			.item-article-value
+				font-weight: bold
+				float: left
+		.item-article-value
+			font-size: 11px
+	.item-title
+		display: inline-block
+		width: 100%
+		padding: 0px 3px
+		line-height: 13px
+		max-height: 39px
+		overflow: hidden
+		.item-offers
+			display: inline-block
+		.oems
+			display: none
+	.item-qty
+		position: absolute
+		bottom: 22px
+		right: -1px
+		width: 105px
+		font-size: 10px
+		&:before
+			content: "остаток "
+	.item-price
+		line-height: 14px
+		width: 124px
+		position: absolute
+		bottom: 4px
+		height: 28px
+		.price-value
+			font-size: 16px!important
+	.item-order
+		width: 105px
+		position: absolute
+		bottom: -1px
+		right: -4px
+		.order-qty
+			width: 35px
+			text-align: center
+			height: 27px
+		.btn-order
+			height: 27px
+
+	.item-view-price
+		width: 100%
+		text-align: center
+		position: absolute
+		bottom: 14px
+
+			
+

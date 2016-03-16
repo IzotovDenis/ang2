@@ -1,0 +1,139 @@
+.row ng-if="1==4"
+	.col-md-3
+		.panel.panel-default
+			.panel-body
+				h1
+					|	3244
+				p.bold Активность сегодня
+	.col-md-3
+		.panel.panel-default
+			.panel-body
+				h1
+					| 4343
+				p.bold Активость вчера
+	.col-md-3
+		.panel.panel-default
+			.panel-body
+				h1
+					| 12
+				p.bold Покупателей сегодня
+	.col-md-3
+		.panel.panel-default
+			.panel-body
+				h1
+					| 34
+				p.bold Покупателей вчера
+.row
+	.col-xs-9
+		.panel.panel-default
+			.panel-heading
+				.panel-title
+					| Последние заказы
+			.panel-table
+				table.table
+					tr
+						th №
+						th Пользователь
+						th Сумма
+						th Время
+					tr ng-repeat="order in stat.orders"
+						td 
+							| {{order.id}}
+						td 
+							| {{order.user.name}}
+						td 
+							| {{order.amount}} руб.
+						td 
+							| {{order.date}}
+		.panel.panel-default
+			.panel-heading
+				.panel-title 
+					| Активность
+			.panel-table
+				table.table.dashboard-activities
+					tr
+						th Дата
+						th Пользователь
+						th Действие
+					tr ng-repeat="activity in stat.activities"
+						td.date
+							| {{activity.date}}
+						td.user
+							| {{activity.user}}
+						td 
+							actionlog controller="activity.controller" log="activity.log" action="activity.action"
+
+	.col-xs-3
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info
+					| Новые
+			.panel-body
+				ul.list-group
+					li.list-group-item ng-repeat="user in stat.noobs"
+						a ng-href="#/users/{{user.id}}"
+							span.glyphicon.glyphicon-user
+							span 
+								| {{user.name}}
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info
+					| Онлайн
+			.panel-body
+				ul.list-group
+					li.list-group-item ng-repeat="user in stat.online"
+						a ng-href="#/users/{{user.id}}"
+							span.glyphicon.glyphicon-user
+							span 
+								| {{user.name}}
+
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info
+					| Курсы валюты
+			.panel-table	
+				table.table.table-currencies
+					tr.tr_middle ng-repeat="currency in currencies"
+						td.col-xs-4
+							span.glyphicon.glyphicon-remove-circle ng-click="currencyDeleted[currency.id] = true"
+							span
+							| {{currency.name}}
+						td.col-xs-8
+							form ng-submit="setRate(currency, $index)" ng-show="!currencyDeleted[currency.id]"
+								div class="input-group"
+									input.form-control.input-sm ng-model="currency.value" ng-disabled="!isEnabled(currency)"
+									div class="input-group-btn"
+										.btn.btn-default.btn-sm ng-click="setEnabled(currency)" ng-show="!isEnabled(currency)"
+											span.glyphicon.glyphicon-edit
+										.btn.btn-default.btn-sm.btn-primary ng-show="isEnabled(currency)" ng-click="setRate(currency, $index)"
+											span.glyphicon.glyphicon-ok
+							div class="input-group" ng-show="currencyDeleted[currency.id]"
+								input.form-control.input-sm ng-model="deleteCurrencyName"
+								div class="input-group-btn"
+									.btn.btn-danger.btn-sm ng-click="currencyDelete(deleteCurrencyName, currency, $index)"
+										span.glyphicon.glyphicon-ok
+									.btn.btn-success.btn-sm.btn-primary ng-click="currencyDeleted[currency.id] = false"
+										span.glyphicon.glyphicon-remove
+			.panel-footer
+				.btn.btn-primary.btn-block.btn-xs ng-click="newValForm = true" ng-show="!newValForm" Добавить валюту
+				div ng-show="newValForm"
+					div class="input-group"
+						input.form-control ng-model="newCurrency.name"
+						div class="input-group-btn"
+							.btn.btn-primary ng-click="addCurrency()" OK
+							.btn.btn-danger ng-click="newValForm = false" X
+		.panel.panel-info
+			.panel-heading
+				.panel-title.bg-info
+					| Прайс лист
+			.panel-body
+				p 
+					| Дата формирования:
+					br
+					span.bold 12:12 12 января 2015 г.
+				p 
+					| Загрузок: 
+					span.bold 4
+			.panel-footer 
+				.btn.btn-primary.btn-block.btn-xs ng-click="newPricelist()"
+					| Обновить прайс-лист

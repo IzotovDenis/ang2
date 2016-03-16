@@ -1,0 +1,84 @@
+.app-view-header
+	| Пользователи
+
+.col-xs-3
+	.panel.panel-info
+		.panel-heading
+			| Краткая информация
+		.panel-body.panel-menu
+			ul
+				li
+					a ng-click="showUsers('all')"
+						| Все
+				li
+					a ng-click="showUsers('buyer')"
+						| Покупатели
+				li
+					a ng-click="showUsers('user')"
+						| Пользователи
+				li
+					a ng-click="showUsers('trash')"
+						| Корзина
+				select.form-control ng-model="sort"
+					option value='name' Наименование
+					option value='inn' ИНН
+					option value='email' email
+					option value='orders_count' кол-во заказов
+					option value='last_activity_at_unix' последнее действие
+					option value='last_order' последний заказ
+					option value='create_at' дата регистрации
+
+				.btn.btn-default ng-click="changeReverse()"
+					.glyphicon.glyphicon-sort
+.col-xs-9
+	.panel.panel-default
+		.panel-table.user-list
+			table.table
+				tr
+					td 
+					td 
+						input.input-sm.form-control ng-model="search.name" placeholder="фильтр наименование"
+					td 
+						input.input-sm.form-control ng-model="search.inn" placeholder="фильтр инн"
+					td
+						input.input-sm.form-control ng-model="search.email" placeholder="фильтр email"
+					td 
+					td 
+					td 
+					td
+						select.form-control.input-sm ng-model="search.role" ng-init="search.role = ''"
+			          		option value="" все
+			          		option value="user" пользователи
+			          		option value="buyer" покупатели
+				tr
+					th 
+					th 
+						a href="" ng-click="predicate = 'name'; reverse=!reverse" Наименование
+					th 
+						a href="" ng-click="predicate = 'inn'; reverse=!reverse" ИНН
+					th
+						a href="" ng-click="predicate = 'email'; reverse=!reverse" email
+					th
+						a href="" ng-click="predicate = 'orders_count'; reverse=!reverse" Заказов
+					th
+						a href="" ng-click="predicate = 'activities_count'; reverse=!reverse" Активности
+					th
+						a href="" ng-click="predicate = 'last_activity_at_unix'; reverse=!reverse" Работал
+					th Статус
+				tr	ng-repeat="user in users | filter:search:strict | orderBy:predicate:reverse" 
+					td
+						.btn.btn-info.btn-xs ng-click="showUser(user.id)" инфо
+					td
+						| {{user.name}}
+					td
+						| {{user.inn}}
+					td
+						| {{user.email}}
+					td
+						| {{user.orders_count}}
+					td
+						| {{user.activities_count}}
+					td
+						| {{user.last_activity_at_hum}}
+					td
+						| {{user.role}}
