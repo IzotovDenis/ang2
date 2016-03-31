@@ -49,6 +49,8 @@
 					.cell.item-qty ng-if="::(canOrder() != false)" 
 						| {{::item.qty}}
 					.cell.item-price ng-if="::(canOrder() != false)"
+						span.price-value.old_price ng-class="::{'hidden': item.old_price == 0.00}"
+							currency value="::item.old_price" item="true"					
 						span.price-value ng-class="::{'price-confirm': item.price == 0.00}"
 							currency value="::item.price" item="true"
 						br

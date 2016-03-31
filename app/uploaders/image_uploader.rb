@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :quality => 95
   end
 
-  version :thumb_m do
+  version :thumb_m, :from_version => :large do
     process :convert => 'jpg'
     process :strip
     process :resize_to_limit => [230,200]

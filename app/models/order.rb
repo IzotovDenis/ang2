@@ -42,7 +42,7 @@ class Order < ActiveRecord::Base
 		@total
 	end 
 
-	def count_position																																																																			
+	def count_position
 		self.order_items.count
 	end
 
@@ -84,7 +84,7 @@ class Order < ActiveRecord::Base
 						items.article,
 						json_data.key AS id, 
 						json_data.value::jsonb->'qty' AS ordered,
-						round (CAST (CASE coalesce(orders.formed::text, 'null') WHEN 'null' THEN coalesce((items.bids->'#{@price_type}'->>'value')::float*currencies.actual, '0.00')::text ELSE CAST(json_data.value::jsonb->'price' AS text) END AS numeric),2) AS price,
+						round (CAST (CASE coalesce(orders.formed::text, 'null') WHEN 'null' THEN coalesce((coalesce((items.label->'discount')::float*(items.bids->'#{@price_type}'->>'value')::float, (items.bids->'#{@price_type}'->>'value')::float))*currencies.actual, '0.00')::text ELSE CAST(json_data.value::jsonb->'price' AS text) END AS numeric),2) AS price,
 						items.full_title as title,
 						CASE  WHEN items.qty BETWEEN 0 AND 9 THEN items.qty::text
 									WHEN items.qty BETWEEN 10 AND 49 THEN '10-49'::text

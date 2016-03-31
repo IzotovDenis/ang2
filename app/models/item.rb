@@ -66,8 +66,9 @@ class Item < ActiveRecord::Base
 										WHEN items.qty BETWEEN 50 AND 100 THEN '50-100'::text
 										ELSE '> 100'::text END as qty,
 							CASE coalesce(items.image, 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
+							CASE coalesce(items.label->'discount', 'null') WHEN 'null' THEN 0 ELSE (items.bids->'#{price}'->>'value')::float*currencies.actual END AS old_price,
 							items.created_at,
-					coalesce((items.bids->'#{price}'->>'value')::float*currencies.actual, '0.00') as price").to_sql)
+					coalesce((coalesce((items.label->'discount')::float*(items.bids->'#{price}'->>'value')::float, (items.bids->'#{price}'->>'value')::float))*currencies.actual, '0.00') as price").to_sql)
 		else
 			connection.execute(joins(:group)
 					.where(:groups => {:disabled => [nil,false]})
@@ -81,7 +82,7 @@ class Item < ActiveRecord::Base
 							#{@properties}
 							#{@is_new}
 							CASE coalesce(items.image, 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
-							items.created_at").to_sql)
+							items.created_at").to_sql)	
 		end
 	end
 
