@@ -65,7 +65,7 @@ class Item < ActiveRecord::Base
 										WHEN items.qty BETWEEN 10 AND 49 THEN '10-49'::text
 										WHEN items.qty BETWEEN 50 AND 100 THEN '50-100'::text
 										ELSE '> 100'::text END as qty,
-							CASE coalesce(items.image, 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
+							CASE coalesce(items.image,	 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
 							CASE coalesce(items.label->'discount', 'null') WHEN 'null' THEN 0 ELSE (items.bids->'#{price}'->>'value')::float*currencies.actual END AS old_price,
 							items.created_at,
 					coalesce((coalesce((items.label->'discount')::float*(items.bids->'#{price}'->>'value')::float, (items.bids->'#{price}'->>'value')::float))*currencies.actual, '0.00') as price").to_sql)
@@ -77,12 +77,13 @@ class Item < ActiveRecord::Base
 							items.full_title as title,
 							items.id,
 							items.properties-> 'Код товара' as kod,
-							items.properties-> 'OEM' as oem,
+							items.properties-> 'ОЕМ' as oems,
+							items.properties-> 'Размер' as size,
 							array_to_string(items.cross, ' ', '*') as cross,
 							#{@properties}
 							#{@is_new}
 							CASE coalesce(items.image, 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
-							items.created_at").to_sql)	
+							items.created_at").to_sql)
 		end
 	end
 

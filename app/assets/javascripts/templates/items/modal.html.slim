@@ -68,6 +68,10 @@
 					span.propertie-name Вес:
 					span.propertie-value
 						| {{item.weight}} кг.
+				.modal-item-propertie ng-if="::item.size"
+					span.propertie-name Размер:
+					span.propertie-value
+						| {{item.size}}
 				.modal-item-propertie ng-if="::item.type"
 					span.propertie-name Тип:
 					span.propertie-value
