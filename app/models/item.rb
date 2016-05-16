@@ -58,6 +58,7 @@ class Item < ActiveRecord::Base
 							items.id,
 							items.properties-> 'Код товара' as kod,
 							items.properties-> 'ОЕМ' as oems,
+							items.properties-> 'Размер' as size,
 							array_to_string(items.cross, ' ', '*') as cross,
 							#{@properties}
 							#{@is_new}
