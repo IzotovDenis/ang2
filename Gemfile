@@ -58,6 +58,7 @@ gem "sidekiq-status"
 gem 'angularjs-rails', '1.3.14'
 gem 'ng-rails-csrf'
 gem 'oj'
+gem 'savon'
 gem 'oj_mimic_json'
 gem 'saxerator', :git => 'git://github.com/soulcutter/saxerator.git'
 gem 'angular-rails-templates'

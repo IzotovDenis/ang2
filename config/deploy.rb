@@ -5,7 +5,7 @@ set :application, 'pavto'
 application = 'pavto'
 set :rvm_type, :user
 set :rails_env, 'production'
-set :rvm_ruby_version, '2.2.0'
+set :rvm_ruby_version, '2.3.0'
 set :deploy_to, '/home/deployer/apps/pavto'
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 

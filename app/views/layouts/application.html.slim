@@ -31,7 +31,7 @@ html ng-app="App" ng-controller="MainCtrl"
                       option value="article" По артикулу
                       option value="title" По наименованию
                       option value="oem" По OEM
-                  span.input-group-btn
+                  span.input-group-btn  
                     .btn.btn-primary type="button" ng-click="enterFind(newQuery)"
                       span.glyphicon.glyphicon-search aria-hidden="true"
                 .checkbox ng-show="system.group.id"
@@ -45,10 +45,9 @@ html ng-app="App" ng-controller="MainCtrl"
                     | {{order.itemIds.length}}
                   .text
                     | Корзина
-              a.enter-btn.btn-primary ng-href="/users/sign_in" target="_self" ng-if="user.authorized == false"
+              a.enter-btn.btn-primary ng-href="/users/sign_in" textarget="_self" ng-if="user.authorized == false"
                 span.glyphicon.glyphicon-log-in
                 | Вход
-
           = yield
       .footer
         = render "layouts/footer"
