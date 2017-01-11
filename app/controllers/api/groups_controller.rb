@@ -38,8 +38,6 @@ class Api::GroupsController < ApiController
 	# Use callbacks to share common setup or constraints between actions.
 	def set_group
 	  @group = Group.find(params[:id])
-    params[:instock] === "true" ? @instock = true : @instock = false
-    puts @instock
 	end
 
   def set_instock
