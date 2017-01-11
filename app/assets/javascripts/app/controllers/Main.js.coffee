@@ -12,6 +12,12 @@ app.controller "MainCtrl", MainCtrl = ["$scope","$http", "Group", "User", "Order
 	$scope.canOrder = ->
 		User.can_order
 
+	$scope.OnlyInStock = System.OnlyInStock
+
+	$scope.toggleStock = ->
+		System.toggleInStock()
+		$route.reload()
+
 	$scope.newQuery = {}
 
 	# Метод установки скидки

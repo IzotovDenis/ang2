@@ -6,6 +6,7 @@ class Ability
 
     if @user.id == nil
       can :read, Item #for guest without roles
+      can :view_price, Item
     else
       send(@user.role)
     end
@@ -14,7 +15,7 @@ class Ability
 
   def buyer
     user
-    can :set_discount
+    can :set, :discount
     can :view_price, Item
     can [:index,:show,:modal_order], Order do |order|
       order.user_id == @user.id 
@@ -38,7 +39,7 @@ class Ability
   
   def retail
     buyer
-    cannot :set_discount 
+    cannot :set, :discount
   end 
 
   def manager

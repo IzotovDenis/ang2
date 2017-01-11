@@ -1,4 +1,6 @@
-app.controller "ItemsCtrl", ItemCtrl = ["$scope", "Item", "$modal", "Order", "$filter", "$location", "$routeParams", ($scope, Item, $modal, Order, $filter, $location, $routeParams) ->
+app.controller "ItemsCtrl", ItemCtrl = ["$scope", "Item", "$modal", "Order", "$filter", "$location", "$routeParams", "System", ($scope, Item, $modal, Order, $filter, $location, $routeParams, System) ->
+
+	$scope.OnlyInStock = System.OnlyInStock
 
 	$scope.$on "$routeChangeStart", ->
 		Item.fixedView = false

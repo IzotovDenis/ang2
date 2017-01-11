@@ -12,6 +12,7 @@ app.factory "User", ["$http", "$q", ($http, $q) ->
 		user.login = data.name
 		user.id = data.id
 		user.can_order = data.can_order
+		user.can_set_discount = data.can_set_discount
 
 	user.getCurrent = ->
 	  defer = $q.defer()
@@ -22,6 +23,7 @@ app.factory "User", ["$http", "$q", ($http, $q) ->
 	  ).error (err, status) ->
 	    defer.reject err
 	    user.authorized = false
+	    user.can_set_discount
 	    return
 	  defer.promise
 

@@ -23,7 +23,7 @@ html ng-app="App" ng-controller="MainCtrl"
             .search-form
               form ng-submit="enterFind(newQuery)"
                 .input-group.center-find
-                  input.form-control.find-input placeholder="введите запрос" type="text" ng-model="newQuery.query" ng-change="enterFind(newQuery)" ng-model-options="{debounce: 1000}" find-input=""
+                  input.form-control.find-input placeholder="Поиск по каталогу товаров" type="text" ng-model="newQuery.query" ng-change="enterFind(newQuery)" ng-model-options="{debounce: 1000}" find-input=""
                   span.input-group-btn.find-select
                     select.form-control ng-model="newQuery.attr" ng-init="newQuery.attr = 'all'"
                       option value="all" Везде
@@ -45,7 +45,7 @@ html ng-app="App" ng-controller="MainCtrl"
                     | {{order.itemIds.length}}
                   .text
                     | Корзина
-              a.enter-btn.btn-primary ng-href="/users/sign_in" textarget="_self" ng-if="user.authorized == false"
+              a.enter-btn.btn-primary href="/users/sign_in" target="_self" ng-if="user.authorized == false"
                 span.glyphicon.glyphicon-log-in
                 | Вход
           = yield

@@ -2,8 +2,10 @@
 	| {{items.itemViews()}}
 	.item-control ng-show="items.itemsControl"
 		.item-view
-			span.title Показывать товары:
 			.btn-group
+				label.btn.btn-default.checkbox.fixes-box
+					input.fixes-box-checkbox type="checkbox" ng-model="OnlyInStock" ng-change="toggleStock()"
+					| Только товары в наличии
 				label.btn.btn-default btn-radio="'list'" ng-model="items.userView" ng-click="items.setUserView('list')"
 					.glyphicon.glyphicon-th-list
 				label.btn.btn-default btn-radio="'thumbs'" ng-model="items.userView" ng-click="items.setUserView('thumbs')"
@@ -18,13 +20,12 @@
 						| Код/артикул
 					.cell.item-title 
 						| Наименование 
-					.cell.item-qty ng-if="canOrder() != false"
+					.cell.item-qty
 						| Остаток
-					.cell.item-price ng-if="canOrder() != false"
+					.cell.item-price
 						| Цена
 					.cell.item-order ng-if="canOrder() != false"
-						|Заказ
-					.cell.item-view-price ng-if="canOrder() == false"
+						| Заказ
 				.item ng-repeat="item in items.list" key-focus="" ng-class="::{sold: item.qty == 0}"
 					.cell.item-photo ng-click="itemShowImage(item)"
 						item-image image="::item.image" size="imageView" id="::item.id"
@@ -46,11 +47,11 @@
 							.label.label-green.label-new 
 								| new
 						itemoem oems="::item.oems"
-					.cell.item-qty ng-if="::(canOrder() != false)" 
+					.cell.item-qty 
 						| {{::item.qty}}
-					.cell.item-price ng-if="::(canOrder() != false)"
+					.cell.item-price
 						span.price-value.old_price ng-class="::{'hidden': item.old_price == 0.00}"
-							currency value="::item.old_price" item="true"					
+							currency value="::item.old_price" item="true"
 						span.price-value ng-class="::{'price-confirm': item.price == 0.00}"
 							currency value="::item.price" item="true"
 						br
@@ -60,8 +61,6 @@
 						form ng-submit="addToCart(item)"
 							input.order-qty type="text" ng-model="item.ordered" name="order_item[qty]" placeholder="0"
 							input.btn.btn-xs.btn-default.qty-btn.btn-order ng-class="{'btn-success': inCart(item.id)}" type="submit" value="В корзину"
-					.cell.item-view-price ng-if="::(canOrder() == false)"
-						.btn.btn-default.btn-xs ng-click="priceShow()" увидеть цены
 	.center ng-show="items.busy"
 		.glyphicon.glyphicon-refresh.glyphicon-refresh-animate.loading
 	pagination total-items="items.totalEntries" ng-model="currentPage" ng-change="pageChanged()" items-per-page="items.itemsPerPage" previous-text="Назад" next-text="Вперед" ng-show="items.itemsPagin"

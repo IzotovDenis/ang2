@@ -5,7 +5,7 @@
 				span.btn-head-lable
 					| Новинки
 	ul.controls.controls-right
-		li.head-btn.dropdown.dropdown-discount.cursor-pointer ng-if="user.authorized == true"
+		li.head-btn.dropdown.dropdown-discount.cursor-pointer ng-if="user.can_set_discount == true"
 			a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" role="button"
 				span.text
 					| Скидка {{user.discount}} %

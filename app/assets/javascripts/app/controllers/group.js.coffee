@@ -7,11 +7,15 @@ app.controller "GroupCtrl", GroupCtrl = ["$scope", "$http", "Item", "Order", "Or
 	# Показываем контроль панель в группах
 	Item.itemsControl = false
 	Item.itemsPagin = false
+
+	$scope.OnlyInStock = System.OnlyInStock
+
+
 	
 	# Урл для запросов infinity-scroll
-	url = "/api/groups/" + $routeParams.groupId
+	url = "/api/groups/" + $routeParams.groupId + "?instock="+$scope.OnlyInStock
 	if $routeParams.page
-		url = url + "?page="+$routeParams.page
+		url = url + "&page="+$routeParams.page
 
 	$scope.groups.setGroup($routeParams.groupId)
 	

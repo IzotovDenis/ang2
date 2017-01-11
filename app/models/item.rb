@@ -30,7 +30,16 @@ class Item < ActiveRecord::Base
 	end
 
 
-	def self.pg_result(price = false, properties = false)
+	def self.pg_result(price = false, properties = false, can_view_qty = false)
+		if can_view_qty
+			@qty = 		"CASE  WHEN items.qty BETWEEN 0 AND 9 THEN items.qty::text
+						WHEN items.qty BETWEEN 10 AND 49 THEN '10-49'::text
+						WHEN items.qty BETWEEN 50 AND 100 THEN '50-100'::text
+						ELSE '> 100'::text END as qty,"
+		else
+			@qty = 	"CASE  WHEN items.qty BETWEEN 1 AND 1000000 THEN 'в наличии'::text
+					ELSE 'нет на складе'::text END as qty,"
+		end
 		if properties
 			@properties = 	"	replace(items.text, '\n', '<br>') as text,
 								items.properties-> 'Страна изготовитель' as country,
@@ -62,10 +71,7 @@ class Item < ActiveRecord::Base
 							array_to_string(items.cross, ' ', '*') as cross,
 							#{@properties}
 							#{@is_new}
-							CASE  WHEN items.qty BETWEEN 0 AND 9 THEN items.qty::text
-										WHEN items.qty BETWEEN 10 AND 49 THEN '10-49'::text
-										WHEN items.qty BETWEEN 50 AND 100 THEN '50-100'::text
-										ELSE '> 100'::text END as qty,
+							#{@qty}
 							CASE coalesce(items.image,	 'null') WHEN 'null' THEN 'false'::boolean ELSE 'true' END AS image,
 							CASE coalesce(items.label->'discount', 'null') WHEN 'null' THEN 0 ELSE (items.bids->'#{price}'->>'value')::float*currencies.actual END AS old_price,
 							items.created_at,

@@ -1,0 +1,21 @@
+doctype html
+html ng-app="App" ng-controller="MainCtrl"
+	head
+		title ng-bind="title.getTitle()" Автотовары оптом Планета-Авто
+		= javascript_include_tag "application"
+		= stylesheet_link_tag    "application", media: "all"
+		= csrf_meta_tags
+		base href="/"
+	body 
+		#body-container ng-class="{app_load: appLoad}"
+			#masthead-positioner
+				span |text here
+			#masthead-positioner-height-offset
+			#page-container
+				#page.pa-clearfix
+					#guide
+						#guide-menu.guide-menu-layout
+							= render "layouts/menu"
+					#content.content-aligment
+						.pa-card
+							= yield

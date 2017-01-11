@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pricelist.zip' => "api/pricelists#download"
 
   namespace :api do
+    get 'booking' => "booking#index"
     resources :pricelists, :only =>[:index]
     resources :groups, :only =>[:index, :show] do
       collection do 

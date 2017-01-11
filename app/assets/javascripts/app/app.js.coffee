@@ -14,6 +14,7 @@ app.config ["$routeProvider", "$locationProvider", "$httpProvider", ($routeProvi
 	$routeProvider.when '/orders/:orderId', templateUrl: 'orders/show.html', controller: "OrderShowCtrl"
 	$routeProvider.when '/offers/:offerId', templateUrl: 'offers/show.html', controller: "OfferShowCtrl"
 	$routeProvider.when '/info/:page', templateUrl: 'info/show.html', controller: "InfoShowCtrl"
+	$routeProvider.when '/booking', templateUrl: 'booking/index.html', controller: "BookingCtrl"
 	$routeProvider.when '/', templateUrl: 'groups/index.html', controller: "GroupIndexCtrl"
 	$routeProvider.otherwise templateUrl: '404.html'
 ]

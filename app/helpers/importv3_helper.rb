@@ -197,7 +197,7 @@ module Importv3Helper
 
 	def sort_items
 		Group.find_each do |group|
-			items = group.items.able.sort_by &:full_title
+			items = group.items.able.sort_by &:title
 			items.each_with_index do |item,index|
 				item.update_attribute('position', index)
 			end

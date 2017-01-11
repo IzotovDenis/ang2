@@ -1,0 +1,103 @@
+h1 Товар под заказ
+
+h1 ng-if="success == false"
+	| Что за дичь ты ищешь?
+
+h1 |{{success}}
+
+form ng-submit="FindBookingItems(newQuery)"
+	.input-group.center-find
+		input.form-control.find-input placeholder="Поиск по каталогу товаров" type="text" ng-model="query" find-input=""
+		span.input-group-btn
+			.btn.btn-primary type="button" ng-click="FindBookingItems(query)"
+				span.glyphicon.glyphicon-search aria-hidden="true"
+
+.bk-items
+	.bk-items-head
+		.bk-items-head-name.bk-cell
+			| наименование
+		.bk-items-brand.bk-cell
+			| бренд
+		.bk-items-part-number.bk-cell
+			| номер
+		.bk-items-sale-number.bk-cell
+			| кратность отгрузки
+		.bk-cell
+			.bk-inner-items
+				.bk-item
+					.bk-items-delivery-time.bk-cell1
+						| доставка
+					.bk-items-qty.bk-cell1
+						| остаток
+					.bk-items-order.bk-cell1
+						| цена
+					.bk-items-order.bk-cell1
+						| заказ
+	.bk-item ng-repeat="item in parts"
+		.bk-items-head-name.bk-cell
+			| {{item.name}}
+		.bk-items-brand.bk-cell
+			| {{item.brand}}
+		.bk-items-part-number.bk-cell
+			| {{item.part_number}}
+		.bk-items-sale-number.bk-cell
+			| кратность отгрузки
+		.bk-cell
+			.bk-inner-items
+				.bk-inner-item ng-repeat="offer in item.offers"
+					.bk-items-delivery-time.bk-cell1
+						| {{offer.delivery_time}}
+					.bk-items-qty.bk-cell1
+						| {{offer.count}}
+					.bk-items-order.bk-cell1
+						currency value="::offer.retail_price" item="true" 
+						|  руб.
+					.bk-items-order.bk-cell1
+						form ng-submit="addToCart(item)"
+							input.order-qty type="text" name="order_item[qty]" placeholder="0"
+							input.btn.btn-xs.btn-default.qty-btn.btn-order  type="submit" value="заказать"
+h3 Аналоги других производителей
+.bk-items
+	.bk-items-head
+		.bk-items-head-name.bk-cell
+			| наименование
+		.bk-items-brand.bk-cell
+			| бренд
+		.bk-items-part-number.bk-cell
+			| номер
+		.bk-items-sale-number.bk-cell
+			| кратность отгрузки
+		.bk-cell
+			.bk-inner-items
+				.bk-item
+					.bk-items-delivery-time.bk-cell1
+						| доставка
+					.bk-items-qty.bk-cell1
+						| остаток
+					.bk-items-order.bk-cell1
+						| цена
+					.bk-items-order.bk-cell1
+						| заказ
+	.bk-item ng-repeat="item in crosses"
+		.bk-items-head-name.bk-cell
+			| {{item.name}}
+		.bk-items-brand.bk-cell
+			| {{item.brand}}
+		.bk-items-part-number.bk-cell
+			| {{item.part_number}}
+		.bk-items-sale-number.bk-cell
+			| кратность отгрузки
+		.bk-cell
+			.bk-inner-items
+				.bk-inner-item ng-repeat="offer in item.offers"
+					.bk-items-delivery-time.bk-cell1
+						| {{offer.delivery_time}}
+					.bk-items-qty.bk-cell1
+						| {{offer.count}}
+					.bk-items-order.bk-cell1
+						currency value="::offer.retail_price" item="true" 
+						|  руб.
+					.bk-items-order.bk-cell1
+						form ng-submit="addToCart(item)"
+							input.order-qty type="text" name="order_item[qty]" placeholder="0"
+							input.btn.btn-xs.btn-default.qty-btn.btn-order  type="submit" value="заказать"

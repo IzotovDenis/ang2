@@ -49,7 +49,11 @@ module FindHelper
 		d << " | (#{string} | *#{string}*)"
 		query = []
 		where_find.each do |index|
-			query << "(@(#{index}) #{d})"
+			if index == 'oem'
+				query << "(@(#{index}) *#{string}*)"
+			else
+				query << "(@(#{index}) #{d})"
+			end
 		end
 		query
 	end
