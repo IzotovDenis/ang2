@@ -2,7 +2,6 @@ class ApiController < ApplicationController
 	include ActivityHelper
 	include OrdersHelper
 	before_action :check_abb
-  before_action :set_activi
   protected
 
   def check_abb
