@@ -22,7 +22,7 @@ class Api::GroupsController < ApiController
   def show
   	ids = @group.subtree_ids
     price = true if can? :view_price, Item
-    @items = Item.where(:group_id=>@group.id).where(@instock).order("items.group_id, items.position").page(params[:page]).pg_result(@can_view_price,falses,@can_view_qty)
+    @items = Item.where(:group_id=>@group.id).where(@instock).order("items.group_id, items.position").page(params[:page]).pg_result(@can_view_price,false,@can_view_qty)
     @total_entries = Item.where(:group_id=>@group.id).where(@instock).count
     render :json => {
               :items => @items, 
