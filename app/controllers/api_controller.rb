@@ -1,5 +1,4 @@
 class ApiController < ApplicationController
-	include ActivityHelper
 	include OrdersHelper
 	before_action :check_abb
   protected
